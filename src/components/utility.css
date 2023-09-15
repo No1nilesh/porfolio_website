@@ -121,16 +121,16 @@ filter: blur(5px);
 }
 
 .cut{
-  display: none;
-  
+  transform: translateY(-18px);
+  transition: transform 200ms;
 }
 
-input[type="text"]:focus ~ .cut, input[type="email"]:focus ~ .cut, textarea:focus ~ .cut  {
-display: block;
+input[type="text"]:focus ~ .cut, input[type="email"]:focus ~ .cut, textarea:focus ~ .cut , input.has-content ~ .cut , textarea.has-content ~ .cut{
+transform: translateY(0);
 }
 
 
-input[type="text"]:focus ~ .nlabel, input[type="email"]:focus ~ .elabel, textarea:focus ~ .qlabel  {
+ input[type="text"]:focus ~ .nlabel, input[type="email"]:focus ~ .elabel, textarea:focus ~ .qlabel , input.has-content ~ .elabel , input.has-content ~ .nlabel , textarea.has-content ~.qlabel   {
   transform: translateX(20px)translateY(-18px);
   font-size: 0.8rem;
   font-weight: bold;

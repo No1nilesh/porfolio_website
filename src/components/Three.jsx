@@ -1,11 +1,12 @@
-import  { useEffect, useRef } from 'react';
-import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import img from '../../src/assets/space.jpg'
-import moonimg from '../../src/assets/earthh.jpg'
-import earthtexture from '../../src/assets/earthbump.jpg'
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import moonimg from "../../src/assets/earthh.jpg";
+import earthtexture from "../../src/assets/earthbump.jpg";
 
 const ThreeScene = () => {
+  // const MAX_POINTS = 500;
+
   const canvasRef = useRef();
 
   useEffect(() => {
@@ -17,144 +18,127 @@ const ThreeScene = () => {
       1000
     );
 
-    const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current, alpha: true });
-    renderer.setPixelRatio(window.devicePixelRatio);
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvasRef.current,
+      alpha: true,
+    });
+    //Raycaster
+    const raycaster = new THREE.Raycaster();
+    //mouse
+    const mouse = new THREE.Vector2();
+    camera.position.setZ(7)
+    renderer.setPixelRatio(2);
     renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.autoClear = false;
 
-  
+    // const object = new THREE.Object3D();
+    // object.position.set(0, 0, 0);
+    // scene.add(object);
+
+    // const geometry = new THREE.BufferGeometry();
+
+    // // attributes
+    // const positions = new Float32Array(MAX_POINTS * 3); // 3 vertices per point
+    // geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+    renderer.autoClear = false;
+    renderer.debug.checkShaderErrors = false
+
+    // const target = new THREE.Object3D();
+    // target.position.set(0,0,0);
 
     const ambientLight = new THREE.AmbientLight(0x404040); // Ambient light
     scene.add(ambientLight);
 
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // Sunlight
-directionalLight.position.set(5, 5, 5);
-scene.add(directionalLight);
-
-    // const lightHelper = new THREE.PointLightHelper(pointLight);
-    // const gridHelper = new THREE.GridHelper(200, 50);
-    // scene.add(lightHelper , gridHelper);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
 
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.update(); // Call update once to set initial camera position
 
     controls.enableZoom = false;
-    // controls.enableRotate =false
-controls.autoRotate = false;
-    camera.position.z = 7;
 
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       const newWidth = window.innerWidth;
       const newHeight = window.innerHeight;
-  
+
       camera.aspect = newWidth / newHeight;
 
-      if(newWidth < 550){
-        camera.position.z = 8
-        earthmesh.position.y = -5
-      }else if(newWidth < 450){
-        camera.position.z = 7
-        earthmesh.position.y = -5
-      } else{
-        camera.position.z = 7
-        earthmesh.position.y = 0
+      if (newWidth < 550) {
+        camera.position.z = 8;
+        earthmesh.position.y = -5;
+      } else if (newWidth < 450) {
+        camera.position.z = 7;
+        earthmesh.position.y = -5;
+      } else {
+        camera.position.z = 7;
+        earthmesh.position.y = 0;
       }
- 
 
       camera.updateProjectionMatrix();
-  
-      renderer.setSize(newWidth , newHeight);
 
-  });
-  
+      renderer.setSize(newWidth, newHeight);
+    });
 
-    // Generate stars
-    // function addStar() {
-    //   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-    //   const material = new THREE.MeshStandardMaterial({color: 0xFF6347})
-    //   const star = new THREE.Mesh(geometry, material);
-    
-    //   const [x, y, z] = Array(3).fill().map(()=> THREE.MathUtils.randFloatSpread(100));
-    
-    //   star.position.set(x,y,z);
-    
-    //   scene.add(star)
-    // }
-
- 
-    
-    // Array(200).fill().forEach(addStar)
-
-    // const spaceTexture = new THREE.TextureLoader().load(img)
-    // scene.background = spaceTexture;
- 
-
-    //Avatar
-
-    // const jeffTexture = new THREE.TextureLoader().load(jeffimg);
-
-    // const jeff = new THREE.Mesh(
-    //   new THREE.BoxGeometry(3,3,3),
-    //   new THREE.MeshBasicMaterial({map: jeffTexture})
-    // );
-
-    // scene.add(jeff);
-
-    //Moon 
 
     const earthImg = new THREE.TextureLoader().load(moonimg);
     const earthTexture = new THREE.TextureLoader().load(earthtexture);
 
-    const earthgeometry = new THREE.SphereGeometry(3.2, 32, 32)
-  
+    const earthgeometry = new THREE.SphereGeometry(3.2, 32, 32);
 
     const eatrhmaterial = new THREE.MeshPhongMaterial({
-      roughness : 1,
-      metalness:0,
+      roughness: 1,
+      metalness: 0,
       map: earthImg,
       bumpMap: earthTexture,
       bumpScale: 0.5,
-  });
+    });
 
-  const earthmesh = new THREE.Mesh(earthgeometry,eatrhmaterial);
+    const earthmesh = new THREE.Mesh(earthgeometry, eatrhmaterial);
+
+    scene.add(earthmesh);
+
+
+
+  document.addEventListener("mousemove", moveEarth);
+
+    // document.addEventListener("mousedown" , document.removeEventListener("mousemove", moveEarth))
+
+    let targetPosition = new THREE.Vector3();
+
+    function moveEarth(event) {
+      // Update mouse coordinates
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     
-    // moon.position.y = -4
-    scene.add(earthmesh)
-    // moon.position.setX(3)
+      // Update raycaster
+      raycaster.setFromCamera(mouse, camera);
+    
+      // Intersect ray with objects in the scene
+      // earthmesh.position.z = 0;
+      const intersects = raycaster.intersectObjects(scene.children, true);
+    
+      if (intersects.length > 0) {
+        // Assuming the earth object is part of the scene
+        const intersection = intersects[0];
+        targetPosition.copy(intersection.point);
+        targetPosition.z = earthmesh.position.z
+        
+    // Adjust target position here if needed
+    targetPosition.multiplyScalar(0.5); // Example adjustment
 
+    
+      }
+    }
 
-// function moveCamera() {
-//   const t = document.body.getBoundingClientRect().top;
-//   moon.rotation.x += 0.05;
-//   moon.rotation.y += 0.075;
-//   moon.rotation.z += 0.05;
-
-//   jeff.rotation.y += 0.01;
-//   jeff.rotation.z += 0.01;
-
-//   camera.position.z = t * -0.01;
-//   camera.position.x = t * -0.0002;
-//   camera.rotation.y = t * -0.0002;
-// }
-
-// document.body.onscroll = moveCamera;
-// moveCamera();
-   
-
-   
     // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
 
-      // Rotate the torus
-      // torus.rotation.x += 0.01;
-      // torus.rotation.y += 0.005;
-      // torus.rotation.z += 0.01;
+      if(window.innerWidth > 550){
+      earthmesh.position.lerp(targetPosition, 0.05)}
 
       earthmesh.rotation.y += 0.005;
-    
-  
-
 
       controls.update();
 
@@ -168,14 +152,16 @@ controls.autoRotate = false;
     return () => {
       controls.dispose();
       renderer.dispose();
-      // scene.remove(torus);
-      // Array(200).forEach(star => scene.remove(star));
+    
     };
   }, []);
 
-
-
-  return <canvas ref={canvasRef} className='absolute top-0 pointer-events-none sm:pointer-events-auto' />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute top-0 pointer-events-none sm:pointer-events-auto"
+    />
+  );
 };
 
 export default ThreeScene;

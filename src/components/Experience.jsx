@@ -6,11 +6,11 @@ function Experience() {
   <h1 className='text-center text-lg text-[hsla(219,4%,55%,1)] pt-16 md:pt-[5rem]'>My Abilities!</h1>
     <h1 className='text-center text-2xl font-bold text-[hsl(207,90%,72%)] '>Experience</h1>
 
-    <div className='flex flex-col md:flex-row gap-12 pt-8'>
+    <div className='flex flex-col md:flex-row  gap-12 pt-8'>
         <div className="skill-1 bg-[hsla(219,32%,12%,1)] rounded-2xl py-12 px-16 shadow-md">
         <h1 className='text-center text-[hsl(207,90%,72%)] text-lg'>Frontend Developer </h1>
 
-          <div className=' skill_sets flex gap-12 md:gap-16 pt-6'>
+          <div className=' skill_sets flex gap-12  md:gap-16 pt-6'>
 
           <div className='skil_data flex flex-col gap-6'>
             <div> <Badge/> JavaScript 

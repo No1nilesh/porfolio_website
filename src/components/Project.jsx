@@ -17,7 +17,7 @@ const Project = () => {
         <div className="project-1 flex justify-center items-center gap-8 flex-wrap">
           <div className="  md:w-40 md:basis-1/4 bg-inherit rounded-xl  overflow-hidden">
             <img
-              className="  hover:scale-110 transition-transform"
+              className="  hover:scale-110 transition-transform md:aspect-auto aspect-video object-cover "
               src="https://images.unsplash.com/photo-1574340328716-7f09d58917d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1888&q=80"
               alt=""
             />
@@ -52,7 +52,7 @@ const Project = () => {
         <div className="project-2 flex flex-row-reverse justify-center items-center gap-8 flex-wrap">
           <div className="md:w-40 md:basis-1/4 bg-inherit rounded-xl  overflow-hidden">
             <img
-              className="  hover:scale-110 transition-transform"
+              className="  hover:scale-110 transition-transform md:aspect-auto aspect-video object-cover "
               src="https://images.unsplash.com/photo-1584359983106-ef9366f27454?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1928&q=80"
               alt=""
             />
@@ -84,7 +84,7 @@ const Project = () => {
         <div className="project-2 flex  justify-center items-center gap-8 flex-wrap">
           <div className="md:w-40 md:basis-1/4 bg-inherit rounded-xl  overflow-hidden">
             <img
-              className="  hover:scale-110 transition-transform"
+              className="  hover:scale-110 transition-transform md:aspect-auto aspect-video object-cover "
               src="https://images.unsplash.com/photo-1635225507121-49ca3e7d533d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80"
               alt=""
             />

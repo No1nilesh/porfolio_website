@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
-    <footer className="container  bg-[hsla(219,32%,12%,1)] h-60">
+    <footer className=" mt-8  bg-[hsla(219,32%,12%,1)] h-60">
  <h1 className="text-center text-4xl font-bold text-[hsl(207,90%,72%)] py-4"> Nilesh Gautam</h1>
  <div className="   flex  gap-2 self-center justify-center">
       <Link to={"https://www.linkedin.com/in/nilesh-gautam10/"} target='_blank' className="w-8 h-8 cursor-pointer bg-[hsla(219,32%,12%)] hover:bg-[hsl(207,90%,72%)] transition-colors drop-shadow-xl flex justify-center items-center rounded-md p-1"><FontAwesomeIcon icon={faLinkedinIn} size="xl"/></Link>
