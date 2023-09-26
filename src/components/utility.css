@@ -19,8 +19,19 @@ backdrop-filter: blur(10px);
 border: 1px solid rgba(45, 23, 107, 0.24);
 }
 
-
-
+.text-color{
+  color: #77A9F8;
+}
+.secondary-color{
+  background-color: #77A9F8;
+}
+.bg-color{
+  background-color: #0B111E;
+}
+.line-gradient{
+  background: rgb(119,169,248);
+background: linear-gradient(180deg, rgba(119,169,248,1) 24%, rgba(0,0,0,0) 100%);
+}
 .btn {
   background: transparent;
   color: #fff;
@@ -203,6 +214,17 @@ transform: translateY(0);
   transform: rotate(45deg);
 }
 
+.bg{
+  background-image: url("../assets/bg3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
+.drop-shadow-lg{
+  background-color: hsl(219,48%,8%);
+}
 
 @media (min-width: 1280px) {
  

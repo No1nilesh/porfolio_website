@@ -9,7 +9,7 @@ const Project = () => {
       <h1 className="text-center text-lg text-[hsla(219,4%,55%,1)] pt-16 md:pt-[5rem]">
         My Portfolio!
       </h1>
-      <h1 className="text-center text-2xl font-bold text-[hsl(207,90%,72%)] ">
+      <h1 className="text-center text-2xl font-bold text-color ">
         Recent Work
       </h1>
 
@@ -36,7 +36,7 @@ const Project = () => {
               dashboard tracks payments and manages member details. Streamlined
               operations and enhanced user engagement{" "}
             </p>
-            <Link to={"https://github.com/No1nilesh/TY_PROJECT_BACKEND"} target="_blank"  className="text-[hsl(207,90%,72%)] flex items-center gap-3 cursor-pointer checkout py-2">
+            <Link to={"https://github.com/No1nilesh/TY_PROJECT_BACKEND"} target="_blank"  className="text-color flex items-center gap-3 cursor-pointer checkout py-2">
               <span>Chect out</span>{" "}
               <FontAwesomeIcon
                 icon={faArrowUpLong}
@@ -68,7 +68,7 @@ const Project = () => {
               real-time news data and implemented a user-friendly interface to
               present the information in an organized manner..
             </p>
-            <Link to={"https://github.com/No1nilesh/Apna-News"} target="_blank" className="text-[hsl(207,90%,72%)] flex items-center gap-3 cursor-pointer checkout py-2">
+            <Link to={"https://github.com/No1nilesh/Apna-News"} target="_blank" className="text-color flex items-center gap-3 cursor-pointer checkout py-2">
               <span>Chect out</span>{" "}
               <FontAwesomeIcon
                 icon={faArrowUpLong}
@@ -101,7 +101,7 @@ const Project = () => {
               form.connected to a database for seamless
               participant registration.
             </p>
-            <Link to={"https://genesis2023.onrender.com/"} target="_blank" className="text-[hsl(207,90%,72%)] flex items-center gap-3 cursor-pointer checkout py-2">
+            <Link to={"https://genesis2023.onrender.com/"} target="_blank" className="text-color flex items-center gap-3 cursor-pointer checkout py-2">
               <span>Chect out</span>{" "}
               <FontAwesomeIcon
                 icon={faArrowUpLong}

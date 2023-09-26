@@ -21,11 +21,11 @@ const Header = () => {
   }, []);
 
   return (
-    <header className=" w-full bg-[hsl(219,48%,8%)] fixed top-0 z-50 ">
+    <header className=" w-full  fixed top-0 z-50 ">
       {/* top strip on the interface */}
 
-      <div className=" container m-auto  top-strip  px-2 py-4 2xl:w-[70%]">
-        <div className="text-xl  text-[hsl(207,90%,72%)] font-semibold">
+      <div className=" container m-auto  top-strip  px-2 py-4 2xl:w-[80%]">
+        <div className="text-xl  text-color font-semibold">
           Nilesh Gautam
         </div>
       </div>

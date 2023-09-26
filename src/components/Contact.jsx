@@ -56,7 +56,7 @@ console.log('Form submitted:', data);
           <div className="watsapp  bg-[hsla(219,32%,12%,1)] w-full  py-10  rounded-xl relative flex justify-center items-center flex-col">
             <h1 className="text-lg text-center">Watsapp</h1>
             <h2 className="text-[hsla(219,4%,55%,1)]">+916386047729</h2>
-            <span className="absolute top-[94px] bg-[hsl(219,48%,8%)]  rounded-full w-20 h-20 grid place-content-center">
+            <span className="absolute top-[94px] bg-color  rounded-full w-20 h-20 grid place-content-center">
               <Link
                 to={"https://api.whatsapp.com/send?phone=916386047729"}
                 target="_blank"
@@ -76,7 +76,7 @@ console.log('Form submitted:', data);
             <h2 className="text-[hsla(219,4%,55%,1)]">
               gautamnilesh084@gmail.com
             </h2>
-            <span className="absolute top-[94px] bg-[hsl(219,48%,8%)]  rounded-full w-20 h-20 grid place-content-center">
+            <span className="absolute top-[94px] bg-color  rounded-full w-20 h-20 grid place-content-center">
               <Link to={"mailto:gautamnilesh084@gmail.com"} target="_blank">
                 <FontAwesomeIcon
                   icon={faEnvelope}
@@ -107,7 +107,7 @@ console.log('Form submitted:', data);
               className=" bg-[hsla(219,32%,12%,1)] rounded-lg px-2 py-3  focus:bg-[hsla(219,32%,12%,1)] outline-none"
             />
 
-            <div className="cut absolute w-[8ch] h-[2ch] bg-[hsl(219,48%,8%)] py-2 rounded-b-lg top-0 left-3 "></div>
+            <div className="cut absolute w-[8ch] h-[2ch] bg-color py-2 rounded-b-lg top-0 left-3 "></div>
             <label
               htmlFor="name"
               className="absolute p-2 text-[hsla(219,4%,55%,1)] nlabel transition-transform"
@@ -126,7 +126,7 @@ console.log('Form submitted:', data);
               className=" bg-[hsla(219,32%,12%,1)] rounded-lg px-2 py-3  focus:bg-[hsla(219,32%,12%,1)] outline-none"
             />
 
-            <div className="cut absolute w-[8ch] h-[2ch] bg-[hsl(219,48%,8%)] py-2 rounded-b-lg top-0 left-3 "></div>
+            <div className="cut absolute w-[8ch] h-[2ch] bg-color py-2 rounded-b-lg top-0 left-3 "></div>
             <label
               htmlFor="email"
               className="absolute p-2 text-[hsla(219,4%,55%,1)] elabel transition-transform"
@@ -146,7 +146,7 @@ console.log('Form submitted:', data);
               className="bg-[hsla(219,32%,12%,1)] rounded-lg px-2 py-5   outline-none"
             ></textarea>
 
-            <div className="cut absolute w-[17ch] h-[2ch] bg-[hsl(219,48%,8%)] py-2 rounded-b-lg top-0 left-3 "></div>
+            <div className="cut absolute w-[17ch] h-[2ch] bg-color py-2 rounded-b-lg top-0 left-3 "></div>
             <label
               htmlFor="quest"
               className="absolute px-2 py-4 text-[hsla(219,4%,55%,1)] qlabel transition-transform"

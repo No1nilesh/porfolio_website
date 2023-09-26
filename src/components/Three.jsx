@@ -1,20 +1,30 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import moonimg from "../../src/assets/earthh.jpg";
-import earthtexture from "../../src/assets/earthbump.jpg";
-
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
+import sprite from "../assets/sprite1.png";
 const ThreeScene = () => {
-  // const MAX_POINTS = 500;
-
   const canvasRef = useRef();
 
   useEffect(() => {
+    let isMouseDown = false;
+    document.addEventListener("mousedown", () => {
+      isMouseDown = true;
+      console.log("mouse down");
+    });
+    document.addEventListener("mouseup", () => {
+      isMouseDown = false;
+      console.log("mouseup");
+    });
+
+    let targetPosition = new THREE.Vector3();
+    //CREATING SCENE
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
-      75,
+      25,
       window.innerWidth / window.innerHeight,
-      0.1,
+      1,
       1000
     );
 
@@ -22,126 +32,195 @@ const ThreeScene = () => {
       canvas: canvasRef.current,
       alpha: true,
     });
-    //Raycaster
+
+    //RAYCASTER
     const raycaster = new THREE.Raycaster();
-    //mouse
+
+    //MOUSE
     const mouse = new THREE.Vector2();
-    camera.position.setZ(7)
+    camera.position.set(20, 3, 5);
+
     renderer.setPixelRatio(2);
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.debug.checkShaderErrors = false;
 
-    // const object = new THREE.Object3D();
-    // object.position.set(0, 0, 0);
-    // scene.add(object);
 
-    // const geometry = new THREE.BufferGeometry();
+    const light = new THREE.HemisphereLight(0xffffff, 0x080820, 0.50);
+    light.position.set(0, 20, 0);
+    scene.add(light);
+    // const helper = new THREE.HemisphereLightHelper(light, 5);
+    // scene.add(helper);
 
-    // // attributes
-    // const positions = new Float32Array(MAX_POINTS * 3); // 3 vertices per point
-    // geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    // const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    // directionalLight.position.set(4, 8, 2);
+    // scene.add(directionalLight);
 
-    renderer.autoClear = false;
-    renderer.debug.checkShaderErrors = false
+    const pointLight = new THREE.PointLight(0xffffff, 1);
+    pointLight.position.set(-2, 4, 5);
+    // pointLight.rotation.set(-0.01, -0.2, -0.1);
 
-    // const target = new THREE.Object3D();
-    // target.position.set(0,0,0);
 
-    const ambientLight = new THREE.AmbientLight(0x404040); // Ambient light
-    scene.add(ambientLight);
+    scene.add(pointLight);
+    // const sphereSize = 1;
+    // const pointLightHelper = new THREE.PointLightHelper(pointLight, sphereSize);
+    // scene.add(pointLightHelper);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // Sunlight
-    directionalLight.position.set(5, 5, 5);
-    scene.add(directionalLight);
+    // const axesHelper = new THREE.AxesHelper(5);
+    // scene.add(axesHelper);
+
+    // scene.add(pointLightHelper);
+    const spotLight = new THREE.SpotLight(0xffffff, 100);
+    spotLight.position.set(10, 40, -2);
+    spotLight.angle = 0.12;
+    spotLight.penumbra = 1;
+    spotLight.decay = 2;
+    spotLight.distance = 0;
+    spotLight.castShadow = true;
+    spotLight.shadow.mapSize.width = 1024;
+    spotLight.shadow.mapSize.height = 1024;
+    spotLight.shadow.camera.near = 1;
+    spotLight.shadow.camera.far = 10;
+    spotLight.shadow.focus = 1;
+    scene.add(spotLight);
+
+    // const lightHelper = new THREE.SpotLightHelper(spotLight);
+    // scene.add(lightHelper);
 
     const controls = new OrbitControls(camera, renderer.domElement);
+    controls.maxPolarAngle = Math.PI / 2;
+    controls.minPolarAngle = Math.PI / 2;
+    controls.enableDamping = true;
+    controls.enableZoom = false;
+    controls.enablePan = false;
+    controls.minDistance = 18;
+
+    // controls.enableZoom = false;
     controls.update(); // Call update once to set initial camera position
 
-    controls.enableZoom = false;
-
-    window.addEventListener("resize", () => {
-      const newWidth = window.innerWidth;
-      const newHeight = window.innerHeight;
-
-      camera.aspect = newWidth / newHeight;
-
-      if (newWidth < 550) {
-        camera.position.z = 8;
-        earthmesh.position.y = -5;
-      } else if (newWidth < 450) {
-        camera.position.z = 7;
-        earthmesh.position.y = -5;
-      } else {
-        camera.position.z = 7;
-        earthmesh.position.y = 0;
-      }
-
+    // RESIZE
+    const resize = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      camera.aspect = width / height;
       camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+      console.log("resize");
+    };
 
-      renderer.setSize(newWidth, newHeight);
-    });
+    window.addEventListener("resize", resize);
 
+    const loader = new GLTFLoader();
 
-    const earthImg = new THREE.TextureLoader().load(moonimg);
-    const earthTexture = new THREE.TextureLoader().load(earthtexture);
+    // Optional: Provide a DRACOLoader instance to decode compressed mesh data
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("/examples/jsm/libs/draco/");
+    loader.setDRACOLoader(dracoLoader);
 
-    const earthgeometry = new THREE.SphereGeometry(3.2, 32, 32);
+    // Load a glTF resource
+    loader.load(
+      // resource URL
+      "src/assets/computerr.gltf",
+      // called when the resource is loaded
+      function (gltf) {
+        const myAxis = new THREE.Vector3(1, 1, 0);
+        const model = scene.add(gltf.scene);
 
-    const eatrhmaterial = new THREE.MeshPhongMaterial({
-      roughness: 1,
-      metalness: 0,
-      map: earthImg,
-      bumpMap: earthTexture,
-      bumpScale: 0.5,
-    });
+        gltf.animations; // Array<THREE.AnimationClip>
+        gltf.scene; // THREE.Group
+        gltf.scenes; // Array<THREE.Group>
+        gltf.cameras; // Array<THREE.Camera>
+        gltf.asset; // Object
+        model.position.set(0, -3.25, -1.5);
+        model.rotation.set(-0.01, -0.2, -0.1);
+        model.scale.set(0.75, 0.75, 0.75);
+        model.receiveShadow = true;
+      },
+      // called while loading is progressing
+      function (xhr) {
+        console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+      },
+      // called when loading has errors
+      function (error) {
+        console.log("An error happened" + error);
+      }
+    );
 
-    const earthmesh = new THREE.Mesh(earthgeometry, eatrhmaterial);
+    // Add the text mesh to
 
-    scene.add(earthmesh);
-
-
-
-  document.addEventListener("mousemove", moveEarth);
-
-    // document.addEventListener("mousedown" , document.removeEventListener("mousemove", moveEarth))
-
-    let targetPosition = new THREE.Vector3();
+    document.addEventListener("mousemove", moveEarth);
 
     function moveEarth(event) {
       // Update mouse coordinates
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    
+      mouse.y = (event.clientY / window.innerHeight) * 2 + 1;
+
       // Update raycaster
       raycaster.setFromCamera(mouse, camera);
-    
+
       // Intersect ray with objects in the scene
-      // earthmesh.position.z = 0;
       const intersects = raycaster.intersectObjects(scene.children, true);
-    
+
       if (intersects.length > 0) {
         // Assuming the earth object is part of the scene
         const intersection = intersects[0];
         targetPosition.copy(intersection.point);
-        targetPosition.z = earthmesh.position.z
-        
-    // Adjust target position here if needed
-    targetPosition.multiplyScalar(0.5); // Example adjustment
-
-    
       }
+    }
+
+    //PARTICLES
+    const Bgeometry = new THREE.BufferGeometry();
+    const vertices = [];
+    const materials = [];
+    let parameters;
+    for (let i = 0; i < 350; i++) {
+      const x = Math.random() * 60 - 30;
+      const y = Math.random() * 60 - 30;
+      const z = Math.random() * 60 - 30;
+      vertices.push(x, y, z);
+    }
+    Bgeometry.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(vertices, 3)
+    );
+    const textureLoader = new THREE.TextureLoader();
+
+    const sprite1 = textureLoader.load(sprite);
+    parameters = [
+      [[0.3, 0.7, 0.9], sprite1, 0.3],
+      [[0.3, 0.3, 0.8], sprite1, 0.3],
+    ];
+    for (let i = 0; i < parameters.length; i++) {
+      const color = parameters[i][0];
+      const sprite = parameters[i][1];
+      const size = parameters[i][2];
+      materials[i] = new THREE.PointsMaterial({
+        size: size,
+        map: sprite,
+        blending: THREE.AdditiveBlending,
+        depthTest: false,
+        transparent: true,
+        opacity: 0.35,
+      });
+      materials[i].color.setRGB(color[0], color[1], color[2]);
+      var particles = new THREE.Points(Bgeometry, materials[i]);
+      particles.rotation.x = Math.random() * 6;
+      particles.rotation.y = Math.random() * 6;
+      particles.rotation.z = Math.random() * 6;
+      // scene.add(particles);
     }
 
     // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
 
-      if(window.innerWidth > 550){
-      earthmesh.position.lerp(targetPosition, 0.05)}
-
-      earthmesh.rotation.y += 0.005;
+      // ico.rotation.y += 0.005;
+      // if (!isMouseDown) {
+      //   camera.position.x += (-mouse.x * 0.5 - camera.position.x) * 0.05;
+      //   camera.position.y += (mouse.y * 0.1 - camera.position.y) * 0.05;
+      // }
 
       controls.update();
-
+      // console.log(camera.position)
       // Render the scene
       renderer.render(scene, camera);
     };
@@ -152,16 +231,10 @@ const ThreeScene = () => {
     return () => {
       controls.dispose();
       renderer.dispose();
-    
     };
   }, []);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="absolute top-0 pointer-events-none sm:pointer-events-auto"
-    />
-  );
+  return <canvas ref={canvasRef} className="absolute top-0 " />;
 };
 
 export default ThreeScene;

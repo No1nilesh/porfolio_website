@@ -1,47 +1,44 @@
 import ThreeScene from "./Three";
 import "./utility.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faLinkedinIn , faGithub , faXTwitter} from '@fortawesome/free-brands-svg-icons'
-import {Link} from 'react-router-dom';
+import { faLinkedinIn, faGithub, faXTwitter } from '@fortawesome/free-brands-svg-icons'
+import { Link } from 'react-router-dom';
 import Navbar from "./Navbar";
 import Resume from "../assets/Resume.pdf"
 
 function Home() {
 
-  const scrollToAbout=()=>{
+  const scrollToAbout = () => {
     const element = document.getElementById("about");
 
     element.scrollIntoView({
-      behavior : "smooth"
+      behavior: "smooth"
     })
   }
 
   return (
-    <div className="h-[100vh] flex justify-evenly md:items-center overflow-hidden relative">
+    <div className="h-[100vh] flex justify-evenly md:items-center overflow-hidden relative bg">
       <ThreeScene />
 
       <div className="md:hidden  absolute w-full rounded-md  h-48 z-50 -bottom-8 sh"></div>
-
-      <span className="absolute self-center -translate-y-20 sm:translate-y-0 md:top-auto">
-        <div className="text-container text-slate-100 text-center text-shadow">
-          <h1 className="text-xl  drop-shadow-md">Hello I'm</h1>
-          <h1 className="text-4xl font-bold drop-shadow-2xl">Nilesh Gautam</h1>
-          <h1 className="text-2xl font-bold drop-shadow-2xl">Web Developer | Full Stack</h1>
-        <Link  to={Resume} download target="_blank"><button className="btn mt-2">Download Resume</button></Link>
-        </div>
-      </span>
-
-      <span onClick={scrollToAbout} className=" self-center right-[-28px]  text-[hsl(207,90%,72%)] text-lg absolute rotate-[-90deg] md:right-1/4 flex justify-center items-center gap-2 cursor-pointer"> <p className="text-md">scroll down</p><button className="mouse">
-      <div className="scroll"></div>
-      </button></span>
-
-      <span className="absolute left-[5%] md:left-1/4 flex flex-col gap-2 self-center justify-self-start">
-      <div className="w-8 h-8 cursor-pointer bg-[hsla(219,32%,12%)] hover:bg-[hsl(207,90%,72%)] transition-colors drop-shadow-xl flex justify-center items-center rounded-md p-1"><a href="https://www.linkedin.com/in/nilesh-gautam10/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedinIn} /></a></div>
-      <div className="w-8 h-8 cursor-pointer bg-[hsla(219,32%,12%)] hover:bg-[hsl(207,90%,72%)] transition-colors drop-shadow-xl flex justify-center items-center rounded-md p-1"><a href="https://github.com/No1nilesh/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a></div>
-      <div className="w-8 h-8 cursor-pointer bg-[hsla(219,32%,12%)] hover:bg-[hsl(207,90%,72%)] transition-colors drop-shadow-xl flex justify-center items-center rounded-md p-1 md:after:content-[''] after:absolute md:after:w-[2px] md:after:h-8 after:bg-[hsl(207,90%,72%)] after:top-9"><a href="https://twitter.com/Nilesh__g1" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faXTwitter} /></a></div>
+      <span className="self-start absolute top-32  select-none pointer-events-none">
+        <h1 className="text-8xl font-extrabold text-color">Nilesh Gautam</h1>
+        <p className="text-3xl text-color text-center">Web Developement | Problem Solving</p>
+        {/* <Link  to={Resume} download target="_blank"><button className="btn mt-2 mx-auto" >Download Resume</button></Link> */}
       </span>
 
       
+      {/* header */}
+      <span className="  flex flex-col  gap-2  justify-center right-[10%] absolute">
+        <div className="w-8 h-8 cursor-pointer outline outline-1 outline-[rgba(255,255,255,0.2)]  bg-[hsla(219,32%,12%,1)] hover:bg-[hsl(207,90%,72%)] transition-colors drop-shadow-xl flex justify-center items-center rounded-md p-1"><a href="https://www.linkedin.com/in/nilesh-gautam10/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedinIn} /></a></div>
+        <div className="w-8 h-8 cursor-pointer outline outline-1 outline-[rgba(255,255,255,0.2)]  bg-[hsla(219,32%,12%,1)] hover:bg-[hsl(207,90%,72%)] transition-colors drop-shadow-xl flex justify-center items-center rounded-md p-1"><a href="https://github.com/No1nilesh/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a></div>
+        <div className="w-8 h-8 cursor-pointer outline outline-1 outline-[rgba(255,255,255,0.2)]  bg-[hsla(219,32%,12%,1)] hover:bg-[hsl(207,90%,72%)] transition-colors drop-shadow-xl flex justify-center items-center rounded-md p-1 md:after:content-[''] "><a href="https://twitter.com/Nilesh__g1" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faXTwitter} /></a></div>
+      </span>
+
+      <div className="absolute top-44 left-[10%] flex flex-col justify-center items-center">
+        <div className="w-5 h-5 rounded-full secondary-color "></div>
+        <div className="line w-1 h-[76vh] secondary-color line-gradient"></div>
+      </div>
 
       {/* <ThreeScene/> */}
 

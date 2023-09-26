@@ -10,7 +10,7 @@ import { BrowserRouter } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
-    <div className="bg-[hsl(219,48%,8%)] text-white ">
+    <div className="bg-color text-white ">
       <Header/>
       <div id="home" className=" lg:h-[100vh]  sections  "> <Home/></div>
       <div id="about" className=" lg:h-[100vh] flex justify-center   sections 2xl:w-[70%] m-auto"><About/></div>
