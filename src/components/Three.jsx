@@ -48,27 +48,12 @@ const ThreeScene = () => {
     const light = new THREE.HemisphereLight(0xffffff, 0x080820, 0.50);
     light.position.set(0, 20, 0);
     scene.add(light);
-    // const helper = new THREE.HemisphereLightHelper(light, 5);
-    // scene.add(helper);
-
-    // const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    // directionalLight.position.set(4, 8, 2);
-    // scene.add(directionalLight);
 
     const pointLight = new THREE.PointLight(0xffffff, 1);
     pointLight.position.set(-2, 4, 5);
-    // pointLight.rotation.set(-0.01, -0.2, -0.1);
 
 
     scene.add(pointLight);
-    // const sphereSize = 1;
-    // const pointLightHelper = new THREE.PointLightHelper(pointLight, sphereSize);
-    // scene.add(pointLightHelper);
-
-    // const axesHelper = new THREE.AxesHelper(5);
-    // scene.add(axesHelper);
-
-    // scene.add(pointLightHelper);
     const spotLight = new THREE.SpotLight(0xffffff, 100);
     spotLight.position.set(10, 40, -2);
     spotLight.angle = 0.12;
@@ -82,9 +67,6 @@ const ThreeScene = () => {
     spotLight.shadow.camera.far = 10;
     spotLight.shadow.focus = 1;
     scene.add(spotLight);
-
-    // const lightHelper = new THREE.SpotLightHelper(spotLight);
-    // scene.add(lightHelper);
 
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.maxPolarAngle = Math.PI / 2;
@@ -122,7 +104,6 @@ const ThreeScene = () => {
       "src/assets/computerr.gltf",
       // called when the resource is loaded
       function (gltf) {
-        const myAxis = new THREE.Vector3(1, 1, 0);
         const model = scene.add(gltf.scene);
 
         gltf.animations; // Array<THREE.AnimationClip>

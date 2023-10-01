@@ -16,21 +16,21 @@ const Contact = () => {
     setCform({ ...Cform, [e.target.name]: e.target.value });
   };
 
-  const  handleSubmit =async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
 
       const response = await fetch("http://localhost:5000/send-mail", {
-        method : 'POST',
-        headers : {
-          'Content-Type' : 'application/json'
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
         },
-        body : JSON.stringify(Cform)
+        body: JSON.stringify(Cform)
       })
-const data  = await response.json()
+      const data = await response.json()
 
-console.log('Form submitted:', data);
+      console.log('Form submitted:', data);
 
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -39,63 +39,63 @@ console.log('Form submitted:', data);
   }
 
   return (
-    <div className="container px-4 pb-6">
-      <h1 className="text-center text-lg text-[hsla(219,4%,55%,1)] pt-16 md:pt-[5rem]">
-        Get In Touch!
-      </h1>
-      <h1 className="text-center text-2xl font-bold text-[hsl(207,90%,72%)] ">
-        Contact Me
-      </h1>
 
-      <div className="main-box flex flex-col md:flex-row gap-16 sm:gap-8">
+
+      <div className="main-box w-full flex flex-col md:flex-row  gap-16 sm:gap-8 px-4 md:p-0">
+
         {/* conatact-label box */}
-        <div className="contact-box basis-1/2 flex flex-col justify-center items-center md:self-start gap-10 md:px-16">
-          <h1 className="text-xl font-bold -mb-6">Talk to me! </h1>
-
+        <div className="contact-box basis-1/2 flex flex-col justify-center  md:self-start gap-10 md:px-16 mt-16 sm:mt-0">
+          <h1 className=' text-lg head_text_color   uppercase'>Ask your Queries</h1>
+          <h1 className='  text-5xl sm:text-6xl md:text-7xl font-bold text-color -mt-7 '>Contact Me.</h1>
           {/* watsapp */}
-          <div className="watsapp  bg-[hsla(219,32%,12%,1)] w-full  py-10  rounded-xl relative flex justify-center items-center flex-col">
-            <h1 className="text-lg text-center">Watsapp</h1>
-            <h2 className="text-[hsla(219,4%,55%,1)]">+916386047729</h2>
-            <span className="absolute top-[94px] bg-color  rounded-full w-20 h-20 grid place-content-center">
-              <Link
-                to={"https://api.whatsapp.com/send?phone=916386047729"}
-                target="_blank"
-              >
-                <FontAwesomeIcon
-                  icon={faWhatsapp}
-                  size="xl"
-                  className="bg-green-600 rounded-full w-[60px] h-[60px] hover:scale-110 transition-transform"
-                />
-              </Link>
-            </span>
+          <div className="gradient-box custom_shadow w-full rounded-xl">
+            <div className="watsapp  bg-[hsla(219,32%,12%,1)] w-full  py-10  rounded-xl relative flex justify-center items-center flex-col">
+              <h1 className="text-lg text-center">Watsapp</h1>
+              <h2 className="text-[hsla(219,4%,55%,1)]">+916386047729</h2>
+              <span className="absolute top-[94px] bg-color  rounded-full w-20 h-20 grid place-content-center">
+                <Link
+                  to={"https://api.whatsapp.com/send?phone=916386047729"}
+                  target="_blank"
+                >
+                  <FontAwesomeIcon
+                    icon={faWhatsapp}
+                    size="xl"
+                    className="bg-green-600 rounded-full w-[60px] h-[60px] hover:scale-110 transition-transform"
+                  />
+                </Link>
+              </span>
+            </div>
           </div>
 
+
           {/* Email */}
-          <div className="watsapp  bg-[hsla(219,32%,12%,1)] w-full py-10  rounded-xl relative flex justify-center items-center flex-col">
-            <h1 className="text-lg text-center">Email</h1>
-            <h2 className="text-[hsla(219,4%,55%,1)]">
-              gautamnilesh084@gmail.com
-            </h2>
-            <span className="absolute top-[94px] bg-color  rounded-full w-20 h-20 grid place-content-center">
-              <Link to={"mailto:gautamnilesh084@gmail.com"} target="_blank">
-                <FontAwesomeIcon
-                  icon={faEnvelope}
-                  size="xl"
-                  className="bg-red-500 rounded-full w-[46px] h-[46px] p-2 hover:scale-110 transition-transform"
-                />
-              </Link>
-            </span>
+          <div className="gradient-box custom_shadow w-full rounded-xl">
+            <div className="watsapp  bg-[hsla(219,32%,12%,1)] w-full py-10  rounded-xl relative flex justify-center items-center flex-col">
+              <h1 className="text-lg text-center">Email</h1>
+              <h2 className="text-[hsla(219,4%,55%,1)]">
+                gautamnilesh084@gmail.com
+              </h2>
+              <span className="absolute top-[94px] bg-color  rounded-full w-20 h-20 grid place-content-center">
+                <Link to={"mailto:gautamnilesh084@gmail.com"} target="_blank">
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    size="xl"
+                    className="bg-red-500 rounded-full w-[46px] h-[46px] p-2 hover:scale-110 transition-transform"
+                  />
+                </Link>
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* contact-Form */}
 
+        {/* contact-Form */}
         <form
           onSubmit={handleSubmit}
           autoComplete="off"
           className="flex basis-1/2 gap-5 flex-col w-full md:px-6"
         >
-          <h1 className="text-xl font-bold text-center">Ask Your Queries! </h1>
+          <h1 className="text-2xl font-bold text-color">Ask Your Queries! </h1>
           <div className="flex flex-col justify-center relative">
             <input
               type="text"
@@ -104,10 +104,10 @@ console.log('Form submitted:', data);
               min={3}
               required
               onChange={onchange}
-              className=" bg-[hsla(219,32%,12%,1)] rounded-lg px-2 py-3  focus:bg-[hsla(219,32%,12%,1)] outline-none"
+              className=" bg-[hsla(219,32%,12%,1)] rounded-lg px-2 py-3  focus:bg-[hsla(219,32%,12%,1)] outline-none inner_shadow"
             />
 
-            <div className="cut absolute w-[8ch] h-[2ch] bg-color py-2 rounded-b-lg top-0 left-3 "></div>
+            <div className="cut absolute w-[8ch] h-[2ch] bg-color py-2 rounded-b-lg top-0 left-3 shadow-2xl"></div>
             <label
               htmlFor="name"
               className="absolute p-2 text-[hsla(219,4%,55%,1)] nlabel transition-transform"
@@ -123,10 +123,10 @@ console.log('Form submitted:', data);
               name="email"
               required
               onChange={onchange}
-              className=" bg-[hsla(219,32%,12%,1)] rounded-lg px-2 py-3  focus:bg-[hsla(219,32%,12%,1)] outline-none"
+              className=" bg-[hsla(219,32%,12%,1)] rounded-lg px-2 py-3  focus:bg-[hsla(219,32%,12%,1)] outline-none inner_shadow"
             />
 
-            <div className="cut absolute w-[8ch] h-[2ch] bg-color py-2 rounded-b-lg top-0 left-3 "></div>
+            <div className="cut absolute w-[8ch] h-[2ch] bg-color py-2 rounded-b-lg top-0 left-3 shadow-2xl"></div>
             <label
               htmlFor="email"
               className="absolute p-2 text-[hsla(219,4%,55%,1)] elabel transition-transform"
@@ -143,10 +143,10 @@ console.log('Form submitted:', data);
               required
               cols="30"
               rows="10"
-              className="bg-[hsla(219,32%,12%,1)] rounded-lg px-2 py-5   outline-none"
+              className="bg-[hsla(219,32%,12%,1)] rounded-lg px-2 py-5   outline-none inner_shadow resize-none "
             ></textarea>
 
-            <div className="cut absolute w-[17ch] h-[2ch] bg-color py-2 rounded-b-lg top-0 left-3 "></div>
+            <div className="cut absolute w-[17ch] h-[2ch] bg-color py-2 rounded-b-lg top-0 left-3 shadow-2xl"></div>
             <label
               htmlFor="quest"
               className="absolute px-2 py-4 text-[hsla(219,4%,55%,1)] qlabel transition-transform"
@@ -176,7 +176,7 @@ console.log('Form submitted:', data);
           </button>
         </form>
       </div>
-    </div>
+   
   );
 };
 
