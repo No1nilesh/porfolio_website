@@ -1,0 +1,20 @@
+.ticker-container {
+    width: 100%; /* Adjust the width as needed */
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
+  
+  .ticker-text {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee linear infinite;
+  }
+  
+  .ticker-text span {
+    display: inline-block;
+    padding-right: 10px; /* Adjust spacing between ticker items */
+  }
+  
+ 
+  

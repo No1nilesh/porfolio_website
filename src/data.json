@@ -23,5 +23,35 @@
       "github_link" : "https://genesis2023.onrender.com/"
     }
   ]
+,
+  
+"sections": [
+  {
+    "icon": "faRibbon",
+    "title": "Experience",
+    "paragraphs": [
+      "Junior Devloper",
+      "Fresher"
+    ]
+  },
+  {
+    "icon": "faSuitcase",
+    "title": "Projects",
+    "paragraphs": [
+      "Completed",
+      "5 Projects"
+    ]
+  },
+  {
+    "icon": "faGraduationCap",
+    "title": "Undergraduate",
+    "paragraphs": [
+      "BCA",
+      "Mes College"
+    ]
+  }
+]
+  
+  
 }
 

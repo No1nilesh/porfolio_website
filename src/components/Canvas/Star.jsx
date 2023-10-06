@@ -28,7 +28,7 @@ function Star(props) {
 }
 
 const StarsCanvas =()=>{
-return <div className='w-full h-[215vh] md:h-[155vh] lg:h-full absolute left-0 z-[3]'>
+return <div className='w-full h-[215vh] md:h-[155vh] lg:h-screen absolute left-0 z-[3]'>
 <Canvas camera={{position: [0, 0, 1]}}>
     <Suspense fallback={null}>
         <Star/>
