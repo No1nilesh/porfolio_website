@@ -1,24 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap'
 import useLenis from './Utility/useLenis';
+import useDebounce from './Utility/useDebounce';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse, faUser, faToolbox, faEnvelope, faBook } from '@fortawesome/free-solid-svg-icons'
 
-// Most Imp fuction to run after the given wait this makes the toggle function to run less time which makes the load less on the website.
-function debounce(func, wait) {
-  let timeout;
-  return function() {
-    const context = this;
-    const args = arguments;
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func.apply(context, args), wait);
-  };
-}
+
 
 
 function Navbar() {
   
   const lenis = useLenis();
+  const debounce = useDebounce();
   
   const [activeSection, setActiveSection] = useState('home');
   const ref = useRef();
@@ -29,7 +22,9 @@ function Navbar() {
     element ? lenis.scrollTo(elId) : null;
   }
 
-  const toggleActive = debounce(() => {
+  
+
+  const toggleActive =() =>{
     let currectActiveButton = null;
     const sections = document.querySelectorAll(".sections");
     sections.forEach((section) => {
@@ -37,8 +32,8 @@ function Navbar() {
       rect.top <= window.innerHeight / 2 ? currectActiveButton = section.id : null;
     });
     setActiveSection(currectActiveButton);
-  }, 10); // Adjust the debounce delay as needed (50ms in this example)
-
+  }
+  const debouncedToggleActive = debounce(toggleActive, 10);
 
 
   useEffect(() => {
@@ -46,9 +41,9 @@ function Navbar() {
     const tl = gsap.timeline({defaults: {ease: "power4.inOut", duration: 2}});
     tl.to(ref.current, {'clipPath': 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', opacity: 1, y:0, duration:2.2 })
 
-    window.addEventListener('scroll', toggleActive);
+    window.addEventListener('scroll', debouncedToggleActive,{ passive: true } );
     return () => {
-      window.removeEventListener('scroll', toggleActive);
+      window.removeEventListener('scroll', debouncedToggleActive, { passive: true });
     };
   }, []);
 

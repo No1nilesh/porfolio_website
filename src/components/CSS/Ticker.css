@@ -1,20 +1,30 @@
-.ticker-container {
-    width: 100%; /* Adjust the width as needed */
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-  }
-  
-  .ticker-text {
-    display: inline-block;
-    white-space: nowrap;
-    animation: marquee linear infinite;
-  }
-  
-  .ticker-text span {
-    display: inline-block;
-    padding-right: 10px; /* Adjust spacing between ticker items */
-  }
-  
- 
-  
+.marquee__part {
+  flex-shrink: 0;
+  padding: 0 4px;
+  font-smooth: always;
+}
+
+.marquee {
+  color: #eee;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.4rem;
+  padding: 10px 0;
+  position: absolute;
+  left: 0;
+  bottom: 5rem;
+  /* transform: rotate(3deg); */
+  overflow: hidden;
+}
+
+.marquee__inner {
+  -webkit-font-smoothing: antialiased;
+  width: fit-content;
+  display: flex;
+  flex: auto;
+  flex-direction: row;
+}
+
+.spacer {
+  height: 50px;
+}

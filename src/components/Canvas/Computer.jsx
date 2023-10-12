@@ -2,7 +2,8 @@ import { Suspense, useRef, useState, useEffect } from 'react';
 import useGsap from '../Utility/useGsap';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Preload, SpotLight, useGLTF } from '@react-three/drei';
-import Loader from '../Loader';
+import Loader from '../UIComponents/Loader';
+import CustomOrbitControls from '../Utility/CustomOrbitControl';
 
 
 function Computer({ isMobile }) {
@@ -21,7 +22,7 @@ function Computer({ isMobile }) {
    
       
 
-    const computer = useGLTF("src/assets/computerr.gltf")
+    const computer = useGLTF("/gamingpc/computerr.gltf")
     return (
         <mesh>
             <hemisphereLight intensity={0.50} groundColor='black' />
@@ -69,7 +70,7 @@ const ComputerCanvas = () => {
             camera={{ position: [20, 3, 5], fov: 25 }}
             gl={{ preserveDrawingBuffer: true }}>
             <Suspense fallback={<Loader />}>
-                <OrbitControls enableZoom={false}
+                <CustomOrbitControls enableZoom={false}
                     maxPolarAngle={Math.PI / 2}
                     minPolarAngle={Math.PI / 2}
                 />
