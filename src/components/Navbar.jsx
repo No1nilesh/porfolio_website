@@ -1,9 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import gsap from 'gsap'
+import useGSAP from './Utility/useGSAPP';
 import useLenis from './Utility/useLenis';
 import useDebounce from './Utility/useDebounce';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faUser, faToolbox, faEnvelope, faBook } from '@fortawesome/free-solid-svg-icons'
+import { faHouse} from '@fortawesome/free-solid-svg-icons/faHouse'
+import { faUser } from '@fortawesome/free-solid-svg-icons/faUser'
+import { faToolbox,  } from '@fortawesome/free-solid-svg-icons/faToolbox'
+import { faEnvelope, } from '@fortawesome/free-solid-svg-icons/faEnvelope'
+import { faBook } from '@fortawesome/free-solid-svg-icons/fabook'
 
 
 
@@ -35,15 +39,19 @@ function Navbar() {
   }
   const debouncedToggleActive = debounce(toggleActive, 10);
 
+  useGSAP({gsapAnimation : (gsap)=>{
+    const tl = gsap.timeline({defaults: {ease: "power4.inOut", duration: 2}});
+    tl.to(ref.current, {'clipPath': 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', opacity: 1, y:0, duration:2.2 })
+  }})
+
 
   useEffect(() => {
 
-    const tl = gsap.timeline({defaults: {ease: "power4.inOut", duration: 2}});
-    tl.to(ref.current, {'clipPath': 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', opacity: 1, y:0, duration:2.2 })
+
 
     window.addEventListener('scroll', debouncedToggleActive,{ passive: true } );
     return () => {
-      window.removeEventListener('scroll', debouncedToggleActive, { passive: true });
+      window.removeEventListener('scroll', debouncedToggleActive);
     };
   }, []);
 

@@ -1,12 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Onest:wght@600;700&family=Poppins:wght@400;700&display=swap");
 
-*,
-html,
-body {
-  font-family: "Poppins", sans-serif;
+
+body, html , *{
+  font-family: Poppins,sans-serif !important;
 }
-
-
 
 /* width */
 ::-webkit-scrollbar {
@@ -16,20 +12,31 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: hsl(218, 8%, 38%, 1);
+  background: hsl(218, 8%, 38%, 1) !important;
   /* border-radius: 5px; */
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: hsl(218, 8%, 26%, 1);
+  background: hsl(218, 8%, 26%, 1) !important;
   border-radius: 5px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-   background: hsl(220, 8%, 23%);
+   background: hsl(220, 8%, 23%) !important;
 }
+
+.bg {
+  
+  background-image: url('/assets/bg3.webp') !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
+  height: 100% !important;
+}
+
+
 
 .active {
   border-radius: 50%;
@@ -65,50 +72,6 @@ nav ul > li {
   color: hsla(219,8%,75%,0.7);
 }
 
-.btn {
-  font-family: inherit;
-  background: transparent;
-  color: #fff;
-  font-size: 18px;
-  border: none;
-  padding: 15px 20px;
-  perspective: 30rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.308);
-}
-
-.btn::before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  border-radius: 10px;
-  background: linear-gradient(
-    320deg,
-    rgba(0, 140, 255, 0.678),
-    rgba(128, 0, 128, 0.308)
-  );
-  z-index: 1;
-  transition: background 3s;
-}
-
-.btn:hover::before {
-  animation: rotate 1s;
-  transition: all 0.5s;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotateY(180deg);
-  }
-
-  100% {
-    transform: rotateY(360deg);
-  }
-}
 
 svg {
   display: inline;
@@ -212,13 +175,7 @@ textarea.has-content ~ .qlabel {
   transform: rotate(45deg);
 }
 
-.bg {
-  background-image: url('/assets/bg3.webp');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 100%;
-}
+
 
 .strip-shadow {
   background: linear-gradient(
@@ -267,14 +224,7 @@ textarea.has-content ~ .qlabel {
   /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.308); */
 }
 
-.text-animation {
-  display: inline;
-  width: 0;
-  white-space: nowrap; /* Keeps the content on a single line */
-  overflow: hidden;
-  animation: typing 4s steps(32, end) alternate infinite,
-    blink 1s steps(2) infinite;
-}
+
 
 .Btn {
   border: none;
@@ -333,28 +283,53 @@ textarea.has-content ~ .qlabel {
   border: 1px solid rgba(21, 16, 48, 0.01);
 }
 
+
+.text-animation {
+  white-space: nowrap; /* Keeps the content on a single line */
+  overflow: hidden;
+  animation: typing 4s steps(15) alternate infinite,
+  blink 1s steps(2) infinite;
+}
+
+
+
 @keyframes blink {
   0% {
-    border-color: transparent;
+    border-right: 2px solid transparent;
   }
   100% {
-    border-color: yellow;
+    border-right: 2px solid rgba(202, 179, 8 ,1);
   }
 }
 
 @keyframes typing {
-  0%,
-  20% {
+  0%{
+    /* clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); */
     width: 0;
-  }
-  60%,
-  100% {
-    width: 26ch;
+  } 
+  80% , 100%{
+    /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); */
+    width: 90%;
   }
 }
 
 .custom_shadow {
   box-shadow: 0px 10px 20px 2px rgba(0, 119, 255, 0.1);
+}
+
+.resume_btn:hover::before{
+content: "Double Click!";
+position: absolute;
+display: flex;
+left: -15px;
+top: -30px;
+width: fit-content;
+text-wrap: nowrap;
+font-style: normal;
+padding:  5px;
+border-radius: 10px;
+background: rgb(0, 0, 0);
+background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #000 100%);
 }
 
 .inner_shadow {
@@ -426,5 +401,20 @@ header {
     width: fit-content;
     transition: all;
     transition: padding 0.3s ease, background-color 0.3s ease;
+  }
+}
+
+.notification{
+animation: noti 3s ease-in-out forwards;
+transform-origin: left;
+}
+
+@keyframes noti {
+  0%{
+    transform: scaleX(5%);
+  }50%{
+    transform: scaleX(55%)
+  }100%{
+    transform: scaleX(100%);
   }
 }

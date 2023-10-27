@@ -1,28 +1,30 @@
+/* eslint-disable react/prop-types */
 import { Suspense, useRef, useState, useEffect } from 'react';
-import useGsap from '../Utility/useGsap';
+import useGSAP from '../Utility/useGSAPP';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Preload, SpotLight, useGLTF } from '@react-three/drei';
+import {  SpotLight } from '@react-three/drei/core/SpotLight';
+import { useGLTF } from '@react-three/drei/core/useGLTF';
+import { Preload } from '@react-three/drei/core/Preload';
 import Loader from '../UIComponents/Loader';
 import CustomOrbitControls from '../Utility/CustomOrbitControl';
 
 
 function Computer({ isMobile }) {
-    const gsap = useGsap();
+
     const ref = useRef();
-    useEffect(() => {
-        const tl = gsap.timeline({ defaults: { ease: "Circ.easeOut", duration: 2 } });
-        isMobile ? tl.fromTo(ref.current.scale,{x:0.4, y:0.4, z:0.4, opacity:0}, { x: 0.7, y: 0.7, z: 0.7, opacity: 1, duration: 1 }) : tl.fromTo(ref.current.scale,{x:0.5, y:0.5, z:0.5}, { x: 0.75, y: 0.75, z: 0.75, opacity: 1, duration: 1 })
-       
-       
 
-    }, [])
+    useGSAP({
+        gsapAnimation : (gsap)=>{
+            const tl = gsap.timeline({ defaults: { ease: "Circ.easeOut", duration: 2 } });
+            isMobile ? tl.fromTo(ref.current.scale,{x:0.4, y:0.4, z:0.4, opacity:0}, { x: 0.7, y: 0.7, z: 0.7, opacity: 1, duration: 1 }) : tl.fromTo(ref.current.scale,{x:0.5, y:0.5, z:0.5}, { x: 0.75, y: 0.75, z: 0.75, opacity: 1, duration: 1 })
+           
+        }
+    })
 
+         
 
+    const computer = useGLTF("/gamingpc/computer.gltf")
     
-   
-      
-
-    const computer = useGLTF("/gamingpc/computerr.gltf")
     return (
         <mesh>
             <hemisphereLight intensity={0.50} groundColor='black' />

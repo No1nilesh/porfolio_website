@@ -1,4 +1,5 @@
-import { Html, useProgress } from "@react-three/drei";
+import { useProgress } from "@react-three/drei/core/useProgress";
+import { Html } from "@react-three/drei/web/Html";
 
 const Loader = () => {
   const { progress } = useProgress();
@@ -13,7 +14,7 @@ const Loader = () => {
         flexDirection: "column",
       }}
     >
-       <div className="code-loader flex items-center justify-center gap-2">
+       <div className="code-loader flex items-center justify-center gap-2 font-[Poppins,sans-serif]">
   <span>&#123;</span><p className="text-xl">{progress.toFixed(2)}%</p><span>&#125;</span>
 </div>
     </Html>

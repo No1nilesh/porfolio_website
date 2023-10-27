@@ -1,33 +1,28 @@
-import { useEffect } from "react";
-import useGsap from "../Utility/useGsap";
+import useGSAP from "../Utility/useGSAPP";
 
 
 const Abchar = (props) => {
 
-	const gsap = useGsap();
+	useGSAP({
+    gsapAnimation: (gsap)=>{
+      const tl = gsap.timeline({defaults:{ease: 'Back.ease.config(2)'} ,scrollTrigger:{
+        trigger: '#about',
+        scrub: false,
+        start: '150px center',
+        end: '80% 600px',
+        // markers:true
+      }})
+  
+      tl.fromTo('.cirlcepulse', {scale:0.4, transformOrigin: "center", }, {scale:1.1, repeat:20, yoyo:true, duration:1.5, delay:3})
+      tl.fromTo('.timeline', {scaleX:0.2, transformOrigin: "right", }, {scaleX:3.5, yoyo:true, duration:1}, "-=30")
+      tl.fromTo('.pageload', { opacity:1, transformOrigin: "right", }, { opacity:0.5, yoyo:true, duration:1, repeat:20}, "-=30")
+    }
+  })
 
-	useEffect(() => {
-		const tl = gsap.timeline({defaults:{ease: 'Back.ease.config(2)'} ,scrollTrigger:{
-			trigger: '#about',
-			scrub: false,
-			start: '150px center',
-			end: '80% 600px',
-			// markers:true
-		}})
-
-		tl.fromTo('.cirlcepulse', {scale:0.4, transformOrigin: "center", }, {scale:1.1, repeat:-1, yoyo:true, duration:1.5, delay:3})
-		tl.fromTo('.timeline', {scaleX:0.2, transformOrigin: "right", }, {scaleX:3.5, yoyo:true, duration:1}, "-=0.5")
-		tl.fromTo('.pageload', {scale:1, opacity:1, transformOrigin: "right", }, {scale:1.1, opacity:0.7, yoyo:true, duration:1, repeat:-1}, "-=0.5")
-
-		return()=>{
-			tl.revert();
-		}
-
-	}, [])
 	
 	
 return (
-  <svg xmlns="http://www.w3.org/2000/svg" width={1200} height={800}  viewBox="0 0 1200 800" {...props} className=" w-[100%] h-[100%]">
+  <svg xmlns="http://www.w3.org/2000/svg" width={1200} height={800}  viewBox="0 0 1200 800" {...props} className=" w-[100%] h-[100%] drop-shadow-[0_35px_35px_rgba(0,119,255,0.4)]">
     <title>{"2211"}</title>
     <defs>
       <linearGradient
@@ -1473,6 +1468,7 @@ return (
         />
         <path
           d="M218.7 347.6h47.1v-47.1h-47.1z"
+          className="pageload"
           style={{
             opacity: 0.3,
             mixBlendMode: "multiply",
@@ -1481,6 +1477,7 @@ return (
         />
         <path
           d="M163.2 347.6h47.1v-47.1h-47.1z"
+          className="pageload"
           style={{
             opacity: 0.3,
             mixBlendMode: "multiply",
@@ -1488,6 +1485,7 @@ return (
           }}
         />
         <path
+        className="pageload"
           d="M275.2 347.6h47v-47.1h-47z"
           style={{
             opacity: 0.3,
@@ -1497,7 +1495,7 @@ return (
         />
         <path
           d="M163.2 386.3h120.3V375H163.2zM163.2 395.6h150.4v-3.5H163.2zM283.4 357.1h28.8v-3.5h-28.8zM227.9 357.1h28.7v-3.5h-28.7zM172.4 357.1h28.7v-3.5h-28.7zM273.8 401.3h48.4v-3.5h-48.4zM163.2 406.9h150.4v-3.5H163.2zM163.2 412.5h159V409h-159zM163.2 418.1h159v-3.5h-159zM163.2 440.8h150.4v-3.5H163.2zM163.2 446.4h159v-3.5h-159zM163.2 452h159v-3.5h-159zM169.6 423.7h152.6v-3.5H169.6zM163.2 429.3h150.4v-3.5H163.2zM193.4 434.9h128.8v-3.5H193.4z"
-          className="s92"
+          className="s92 pageload"
         />
         <path
           fillRule="evenodd"

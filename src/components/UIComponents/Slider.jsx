@@ -5,6 +5,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 
+// eslint-disable-next-line react/prop-types
 function Slider({data}) {
 
   const imgdata = data;

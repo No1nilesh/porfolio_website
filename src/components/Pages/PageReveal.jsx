@@ -1,14 +1,14 @@
-import {useEffect, useRef} from 'react'
+import {useRef} from 'react'
 import '../CSS/Reveal.css'
-import useGsap from '../Utility/useGsap';
+import useGSAP from '../Utility/useGSAPP';
 function PageReveal() {
     const textEl = useRef(null);
-    const gsap = useGsap();
-
-     useEffect(() => {
-        gsap.fromTo('.char', {y:150, }, {y:0, stagger:0.05,delay:0.2,ease:"Power3.easeOut", repeat:-1, duration:0.5});
-    }, [])
-    
+useGSAP({
+  gsapAnimation : (gsap)=>{
+    gsap.fromTo('.char', {y:150, }, {y:0, stagger:0.05,delay:0.2,ease:"Power3.easeOut", repeat:-1, duration:0.5});
+  }
+});
+     
   return (
     <div className="reveal">
     <div className='w-full h-full grid place-content-center'>

@@ -1,27 +1,31 @@
-import { useEffect } from 'react'
-import Lenis from "@studio-freight/lenis";
+import { useEffect, useState } from 'react';
+
 function useLenis() {
+    const [lenisInstance, setLenisInstance] = useState(null);
 
-    const lenis = new Lenis();
-
-    lenis.on('scroll', (e) => {
-        // Custom scroll event logic goes here
-    });
-
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-    
+setTimeout(
     useEffect(() => {
-        return () => {
-            lenis.destroy();
-        }
-    }, []);
+        import('@studio-freight/lenis').then(({ default: Lenis }) => {
+            const lenis = new Lenis();
 
-    return lenis;
+            lenis.on('scroll', (e) => {
+                // Custom scroll event logic goes here
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+
+            requestAnimationFrame(raf);
+
+            setLenisInstance(lenis);
+        });
+}, [])
+     ,2000);
+    
+
+    return lenisInstance;
 }
 
 export default useLenis;

@@ -1,16 +1,15 @@
-import { Link } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
-import useGsap from "../Utility/useGsap";
+import { useState, useRef, lazy } from "react";
+import useGSAP from "../Utility/useGSAPP";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { toast } from 'react-toastify';
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons/faWhatsapp";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
+const Notification = lazy(()=> import('../UIComponents/Notification'))
 const Contact = () => {
-  const gsap = useGsap();
   const cRef = useRef(null);
   const askRef = useRef(null);
   const btnRef = useRef(null);
   const [Cform, setCform] = useState({ name: "", email: "", questions: "" });
+  const [notification, setnotification] = useState({message : "", msgTpye : "success", getmsg: false})
 
   const onchange = (e) => {
     if (e.target.value.trim() != "") {
@@ -48,58 +47,49 @@ const Contact = () => {
       console.log('Form submitted:', data);
 
       if (data) {
-        toast.success('Message sent successfully!', {
-          position: 'top-right',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        });
+    setnotification({ message:"Message sent Successfully", msgTpye : 'success' , getmsg : true})
+setTimeout(() => {
+  setnotification({getmsg : false})
+}, 5000);
       }
 
     } catch (error) {
       console.error('Error submitting form:', error);
-      toast.error(error, {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      })
+      setnotification({ message:"Failed to sent Message", msgTpye : 'error' , getmsg : false})
     }
 
   }
 
-  useEffect(() => {
-    const tl = gsap.timeline({
-      defaults: { ease: 'Back.ease.config(2)' }, scrollTrigger: {
-        trigger: '#contact',
-        scrub: false,
-        start: '150px center',
-        end: '80% 600px',
-        // markers:true
-      }
-    })
-
-    tl.fromTo(cRef.current, { opacity: 0, y: -50 }, { 'clipPath': 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', opacity: 1, transformOrigin: 'center', y: 0, duration: 0.7 })
-    tl.fromTo('.cbox', { opacity: 0, y: -40 }, { opacity: 1, stagger: 0.5, transformOrigin: 'center', y: 0, duration: .5 }, "-=.2")
-    tl.fromTo(askRef.current, { opacity: 0, y: -10 }, { 'clipPath': 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', opacity: 1, transformOrigin: 'center', y: 0, duration: 0.7 }, "-=.5")
-    tl.fromTo('.inp', { opacity: 0, scaleX: 0, }, { opacity: 1, stagger: 0.3, transformOrigin: 'center', scaleX: 1, duration: 0.7, }, "-=.5")
-    tl.fromTo(btnRef.current, { opacity: 0, y: 20 }, { 'clipPath': 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', opacity: 1, y: 0, duration: 0.4, }, "-=0.2")
-    return () => {
-      tl.revert();
+  useGSAP({
+    gsapAnimation : (gsap)=>{
+      const tl = gsap.timeline({
+        defaults: { ease: 'Back.ease.config(2)' }, scrollTrigger: {
+          trigger: '#contact',
+          scrub: false,
+          start: '150px center',
+          end: '80% 600px',
+          // markers:true
+        }
+      })
+  
+      tl.fromTo(cRef.current, { opacity: 0, y: -50 }, { 'clipPath': 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', opacity: 1, transformOrigin: 'center', y: 0, duration: 0.7 })
+      tl.fromTo('.cbox', { opacity: 0, y: -40 }, { opacity: 1, stagger: 0.5, transformOrigin: 'center', y: 0, duration: .5 }, "-=.2")
+      tl.fromTo(askRef.current, { opacity: 0, y: -10 }, { 'clipPath': 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', opacity: 1, transformOrigin: 'center', y: 0, duration: 0.7 }, "-=.5")
+      tl.fromTo('.inp', { opacity: 0, scaleX: 0, }, { opacity: 1, stagger: 0.3, transformOrigin: 'center', scaleX: 1, duration: 0.7, }, "-=.5")
+      tl.fromTo(btnRef.current, { opacity: 0, y: 20 }, { 'clipPath': 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', opacity: 1, y: 0, duration: 0.4, }, "-=0.2")
     }
+  })
 
-  }, [])
+
 
 
   return (
 
-
-    <div className="main-box w-full flex flex-col md:flex-row  gap-16 sm:gap-8 px-4 md:p-0 relative z-10">
-
+<>
+{notification.getmsg ? <Notification notification={notification} setnotification={setnotification}/> : null}
+    <img className='absolute  lg:h-2/3 bottom-0 left-0 opacity-20 ' src={'/assets/tech2.svg'} alt="" />
+  <img className='absolute  lg:h-2/3 opacity-20 right-0 rotate-180 top-0' src={'/assets/tech2.svg'} alt="" />
+    <div className="main-box w-full flex flex-col md:flex-row  gap-16 sm:gap-8 px-4 md:p-0 relative z-10 2xl:w-[80%]">
       {/* conatact-label box */}
       <div className="contact-box basis-1/2 flex flex-col justify-center  md:self-start gap-10 md:px-16 mt-16 sm:mt-0">
         <h1 className=' text-lg head_text_color   uppercase'>Ask your Queries</h1>
@@ -110,16 +100,18 @@ const Contact = () => {
             <h1 className="text-lg text-center">Watsapp</h1>
             <h2 className="text-[hsla(219,4%,55%,1)]">+916386047729</h2>
             <span className="absolute top-[94px] bg-color  rounded-full w-20 h-20 grid place-content-center">
-              <Link
-                to={"https://api.whatsapp.com/send?phone=916386047729"}
+              <a
+              rel="noreferrer"
+                href={"https://api.whatsapp.com/send?phone=916386047729"}
                 target="_blank"
+                aria-label="watsapp"
               >
                 <FontAwesomeIcon
                   icon={faWhatsapp}
                   size="xl"
                   className="bg-green-600 rounded-full w-[60px] h-[60px] hover:scale-110 transition-transform"
                 />
-              </Link>
+              </a>
             </span>
           </div>
         </div>
@@ -133,13 +125,13 @@ const Contact = () => {
               gautamnilesh084@gmail.com
             </h2>
             <span className="absolute top-[94px] bg-color  rounded-full w-20 h-20 grid place-content-center">
-              <Link to={"mailto:gautamnilesh084@gmail.com"} target="_blank">
+              <a rel="noreferrer" href={"mailto:gautamnilesh084@gmail.com"} target="_blank" aria-label="email">
                 <FontAwesomeIcon
                   icon={faEnvelope}
                   size="xl"
                   className="bg-red-500 rounded-full w-[46px] h-[46px] p-2 hover:scale-110 transition-transform"
                 />
-              </Link>
+              </a>
             </span>
           </div>
         </div>
@@ -208,7 +200,7 @@ const Contact = () => {
 
           <div className="cut absolute w-[17ch]  bg-color py-2 rounded-b-lg top-0 left-3 shadow-2xl"></div>
           <label
-            htmlFor="quest"
+            htmlFor="questions"
             className="absolute px-2 py-4 text-[hsla(219,4%,55%,1)] qlabel transition-transform"
           >
             Ask Your Questions
@@ -236,7 +228,7 @@ const Contact = () => {
         </button>
       </form>
     </div>
-
+</>
   );
 };
 

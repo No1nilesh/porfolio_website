@@ -1198,7 +1198,7 @@
 		},
 		{
 			"mesh":26,
-			"name":"IOSHIELD",
+			"name":"ioshield",
 			"rotation":[
 				-0.70710688829422,
 				0.7071066498756409,
@@ -15768,7 +15768,7 @@
 		},
 		{
 			"doubleSided":true,
-			"name":"IOSHIELD",
+			"name":"ioshield",
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
 					"index":9
@@ -17829,7 +17829,7 @@
 			]
 		},
 		{
-			"name":"IOSHIELD",
+			"name":"ioshield",
 			"primitives":[
 				{
 					"attributes":{
@@ -27880,8 +27880,8 @@
 		},
 		{
 			"mimeType":"image/png",
-			"name":"IOSHIELD",
-			"uri":"IOSHIELD.png"
+			"name":"ioshield",
+			"uri":"ioshield.png"
 		},
 		{
 			"mimeType":"image/png",
@@ -72772,7 +72772,7 @@
 	"buffers":[
 		{
 			"byteLength":3433860,
-			"uri":"computerr.bin"
+			"uri":"computer.bin"
 		}
 	]
 }

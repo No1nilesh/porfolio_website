@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import { OrbitControls } from '@react-three/drei';
+import { useRef, useEffect } from 'react';
+import { OrbitControls } from '@react-three/drei/core/OrbitControls';
 
 const CustomOrbitControls = (props) => {
   const controlsRef = useRef();

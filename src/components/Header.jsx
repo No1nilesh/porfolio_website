@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import DP from "/dp.webp"
 import useDebounce from './Utility/useDebounce';
-// eslint-disable-next-line react/prop-types
+
 const Header = ({ aboutRef, homeRef, expref, proRef, conRef }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const headerRef = useRef(null);
@@ -36,20 +36,17 @@ const Header = ({ aboutRef, homeRef, expref, proRef, conRef }) => {
 
   useEffect(() => {
 
-    try {
+    if(window.innerWidth > 1024){
       if (isExpanded) {
-        gsap.fromTo(
+        gsap.to(
           headText.current,
-          { opacity: 0, x: -20 },
-          { opacity: 1, x: 0, duration: 1, ease: 'power4.out' }
+          { opacity: 1, duration: 1, display: "block", ease: 'power4.out' }
         );
       } else {
-        gsap.to(headText.current, { display:"none", duration: 1, ease: 'power4.out' });
+        gsap.to(headText.current, {  duration: .9, display:"none", ease: 'power4.out' });
       }
-    } catch (error) {
-      console.log(error)
+ 
     }
-
   }, [isExpanded]);
 
 
@@ -60,6 +57,7 @@ const Header = ({ aboutRef, homeRef, expref, proRef, conRef }) => {
     tl.to(headerRef.current, { 'clipPath': 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', opacity: 1, y: 0, duration: 2, delay: 0.4 });
     //
       window.addEventListener('scroll', debouncedAddShadow, { passive: true });
+      
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         expandHeader(); // Page is in viewport, expand the navbar
@@ -87,13 +85,13 @@ const Header = ({ aboutRef, homeRef, expref, proRef, conRef }) => {
       <div className=" container   top-strip   ">
         <div className='flex items-center gap-2'>
           <div className="ppic w-10">
-            <img src={DP} alt="Nilesh Gautam" height={"40px"} width={"40px"} />
-          </div>{isExpanded ? <div ref={headText} className="hidden md:block text-xl  text-color font-semibold htext max-w-full">
-            Nilesh Gautam
-          </div> : ""}
-          <div className="text-xl  text-color font-semibold transition-transform  md:hidden">
+            <img src={DP} alt="Nilesh Gautam" height={"40px"} width={"40px"} loading='eager' />
+          </div> <div ref={headText} className="scale-1 text-xl  text-color font-semibold htext max-w-full"  >
             Nilesh Gautam
           </div>
+          {/* <div className="text-xl  text-color font-semibold transition-transform  md:hidden">
+            Nilesh Gautam
+          </div> */}
         </div>
 
       </div>
