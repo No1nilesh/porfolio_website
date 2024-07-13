@@ -5,13 +5,13 @@ Welcome to my portfolio repository! This project showcases my skills and project
 
 ## Table of Contents
 
- - [Introduction](https://github.com/No1nilesh/My_Portfolio/new/master?filename=README.md#introduction)
- - [Features](https://github.com/matiassingers/awesome-readme)
- - [Technologies Used](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
- - [Installation](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
- - [Technologies Used](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
- - [Project Stucture](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
- - [Screenshot](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
+ - Introduction
+ - Features
+ - Technologies Used
+ - Installation
+ - Technologies Used
+ - Project Stucture
+ - Screenshot
 
 
 ## Introduction
