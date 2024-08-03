@@ -7,7 +7,7 @@ import { faHouse } from "@fortawesome/free-solid-svg-icons/faHouse";
 import { faUser } from "@fortawesome/free-solid-svg-icons/faUser";
 import { faToolbox } from "@fortawesome/free-solid-svg-icons/faToolbox";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
-import { faBook } from "@fortawesome/free-solid-svg-icons/fabook";
+import { faBook } from "@fortawesome/free-solid-svg-icons/faBook";
 
 function Navbar() {
   const lenis = useLenis();
