@@ -1,29 +1,33 @@
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect, useCallback } from "react";
 
 function useGSAP(animationConfig) {
+  const gsapAnimationCallback = useCallback(
+    (gsap) => {
+      if (!animationConfig) return null;
+      return animationConfig.gsapAnimation(gsap);
+    },
+    [animationConfig]
+  );
+
   useLayoutEffect(() => {
-    if (!animationConfig) return;
-
-    const { gsapAnimation } = animationConfig;
-
     let animation;
 
     // Dynamic import for GSAP and ScrollTrigger
-    import('gsap').then(({ default: gsap }) => {
-      import('gsap/ScrollTrigger').then(({ default: ScrollTrigger }) => {
+    import("gsap").then(({ default: gsap }) => {
+      import("gsap/ScrollTrigger").then(({ default: ScrollTrigger }) => {
         gsap.registerPlugin(ScrollTrigger);
 
-        // Optionally, you can set ScrollTrigger as a global
-        // gsap.core.globals("ScrollTrigger", ScrollTrigger);
+        const animationFunction = gsapAnimationCallback(gsap);
+        if (animationFunction) {
+          animation = animationFunction;
 
-        animation = gsapAnimation(gsap);
-
-        // Clean up the animation when the component unmounts
-        return () => {
-          if (animation) {
-            animation.kill(); // This stops and removes the animation
-          }
-        };
+          // Clean up the animation when the component unmounts
+          return () => {
+            if (animation) {
+              animation.kill(); // This stops and removes the animation
+            }
+          };
+        }
       });
     });
   }, []);

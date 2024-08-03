@@ -3,8 +3,8 @@
   "projects": [
     {
       "name": "Gym Management Web App",
-      "main_image": "gensis.webp",
-      "images": ["gensis.webp", "genesis1.webp", "genesis2.webp", "genesis3.webp"],
+      "main_image":"fitnessflex.webp" ,
+      "images": ["fitnessflex.webp", "fitnessflex1.webp", "fitnessflex2.webp", "fitnessflex3.webp", "fitnessflex4.webp", "fitnessflex5.webp", "fitnessflex6.webp", "fitnessflex7.webp"] ,
       "project_details": "Developed a user-friendly fitness management web application using React, MongoDB, Express, and Tailwind CSS. Integrated Stripe for seamless payment processing. Users can register, schedule training sessions, and access personalized workout and diet plans. Trainers manage availability, track progress, and provide guidance. Admin dashboard tracks payments and manages member details. Streamlined operations and enhanced user engagement.",
       "github_link" : "https://github.com/No1nilesh/TY_PROJECT_BACKEND"
     },
@@ -17,8 +17,8 @@
     },
     {
       "name": "College Event Website",
-      "main_image": "fitnessflex.webp",
-      "images": ["fitnessflex.webp", "fitnessflex1.webp", "fitnessflex2.webp", "fitnessflex3.webp", "fitnessflex4.webp", "fitnessflex5.webp", "fitnessflex6.webp", "fitnessflex7.webp"],
+      "main_image":  "gensis.webp",
+      "images": ["gensis.webp", "genesis1.webp", "genesis2.webp", "genesis3.webp"] ,
       "project_details": "Developed a user-friendly college event website for Genesis 5.0 using HTML, CSS, JavaScript. Express.js, and MongoDB. Implemented a visually appealing design to showcase events and a registration form. Connected to a database for seamless participant registration.",
       "github_link" : "https://genesis2023.onrender.com/"
     }

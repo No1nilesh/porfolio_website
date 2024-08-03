@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 function useLenis() {
     const [lenisInstance, setLenisInstance] = useState(null);
 
-setTimeout(
-    useEffect(() => {
+    const initializeLenis = useCallback(() => {
         import('@studio-freight/lenis').then(({ default: Lenis }) => {
             const lenis = new Lenis();
 
@@ -21,9 +20,13 @@ setTimeout(
 
             setLenisInstance(lenis);
         });
-}, [])
-     ,2000);
-    
+    }, []);
+
+    useEffect(() => {
+        const timeout = setTimeout(initializeLenis, 2000);
+
+        return () => clearTimeout(timeout);
+    }, [initializeLenis]);
 
     return lenisInstance;
 }

@@ -318,10 +318,10 @@ textarea.has-content ~ .qlabel {
 }
 
 .resume_btn:hover::before{
-content: "Double Click!";
+content: "Download Resume!";
 position: absolute;
 display: flex;
-left: -15px;
+left: -25px;
 top: -30px;
 width: fit-content;
 text-wrap: nowrap;

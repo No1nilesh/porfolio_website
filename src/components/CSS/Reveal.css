@@ -3,7 +3,7 @@
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0,0,0,0.7);
+    background: rgb(#ffffff);
     z-index: 9999; /* Set a high z-index to overlay everything */
     opacity: 1; /* Set the initial opacity to 1 */
     transition: opacity 0.5s ease-in-out; /* Add a smooth transition */
