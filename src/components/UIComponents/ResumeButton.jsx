@@ -20,7 +20,7 @@ function ResumeButton() {
   return (
     <button
       onClick={handleDownload}
-      className=" send-btn self-end clip disabled:grayscale"
+      className="resume send-btn self-end clip disabled:grayscale"
     >
       <span>Download Resume</span>
     </button>

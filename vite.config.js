@@ -15,7 +15,6 @@ export default defineConfig({
           }
         },
       },
-      external: ["@fortawesome/free-solid-svg-icons/fabook"],
     },
     outDir: "build", // Set the output directory to 'build'
   },

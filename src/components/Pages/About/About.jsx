@@ -61,18 +61,11 @@ function About() {
         },
         "-=0.7"
       );
-      tl.fromTo("#info1", { opacity: 0 }, { opacity: 1, duration: 2 }, "-=0.8");
       tl.fromTo(
-        "#info0",
-        { x: 200, opacity: 0 },
-        { x: 0, duration: 1, opacity: 1 },
-        "-=1"
-      );
-      tl.fromTo(
-        "#info2",
+        ".info",
         { x: -200, opacity: 0 },
-        { x: 0, duration: 1, opacity: 1 },
-        "-=1"
+        { x: 0, duration: 1, opacity: 1, stagger: 0.4 },
+        "-=0.5"
       );
       tl.fromTo(
         ".resume_btn",
@@ -82,9 +75,15 @@ function About() {
       );
       tl.fromTo(
         ".socials",
-        { opacity: 0, y: -20 },
-        { y: 0, opacity: 1 },
-        "-=3"
+        { scale: 0.2, opacity: 0 },
+        { scale: 1, opacity: 1, stagger: 0.3, ease: "elastic.out(1,0.3)" },
+        "-=0.5"
+      );
+      tl.fromTo(
+        ".resume",
+        { scale: 0.5, opacity: 0 },
+        { scale: 1, opacity: 1, ease: "elastic.out(1,0.4)" },
+        "-=0.5"
       );
     },
   });
@@ -103,7 +102,7 @@ function About() {
         src={"/assets/tech2.svg"}
         alt="tech"
       />
-      <div className="relative z-20 px-4 2xl:p-0 pb-20 lg:pb-0 2xl:w-[80%] m-auto ">
+      <div className="relative z-20 px-4 2xl:p-0 pb-20 lg:pb-0  2xl:w-[80%] m-auto ">
         <div className="flex flex-col lg:flex-row justify-center items-center lg:gap-4 gap-2 pt-16 sm:pt-[2rem]">
           <div className="md:basis-1/2 self-start flex flex-col gap-1 md:gap-3">
             <h5 className="text-lg head_text_color uppercase">My Intro!</h5>
