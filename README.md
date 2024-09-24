@@ -42,7 +42,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd My_Portfolio
+  cd portfolio_website
 ```
 
 Install dependencies
