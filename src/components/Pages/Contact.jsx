@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons/faWhatsapp";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
 import Notification from "../UIComponents/Notification";
-// const Notification = lazy(()=> import('../UIComponents/Notification'))
 const Contact = () => {
   const cRef = useRef(null);
   const askRef = useRef(null);

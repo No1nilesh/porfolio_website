@@ -114,89 +114,34 @@ function About() {
             </h1>
             <article
               ref={paraRef}
-              className="whitespace-normal mr-2 para-color  clip text-base"
+              className="whitespace-normal mr-2 para-color clip text-base mt-10"
             >
               Meet{" "}
               <span className="text-xl font-semibold text-gray-400">
                 Nilesh Kumar Gautam
               </span>
-              , a dynamic software developer with a passion for pushing
-              boundaries in the digital realm. Armed with expertise in{" "}
+              — a passionate full-stack JavaScript developer with real-world experience building scalable and interactive web applications. Nilesh has hands-on expertise in{" "}
               <span className="text-md font-semibold text-gray-400">
-                JavaScript, React.js, and MongoDB
+                React.js, Next.js, Node.js, Express, MongoDB, Redis, and Socket.io
               </span>
-              , Nilesh crafts innovative solutions that redefine industry
-              standards. From the sleek and intuitive{" "}
+              , with a growing command over real-time communication and scalable backend architectures. One of his notable projects is{" "}
               <span className="text-md font-semibold text-gray-400">
-                Fitness Flex gym management app
+                Fitness Flex 2.0
+              </span>
+              — a comprehensive gym management platform that features live group training using{" "}
+              <span className="text-md font-semibold text-gray-400">
+                MediaSoup
               </span>{" "}
-              to the dynamic{" "}
-              <span className="text-md font-semibold text-gray-400">
-                Genesis 5.0 college event website
-              </span>
-              , Nilesh&lsquo;s portfolio showcases his prowess and creativity in
-              equal measure. But Nilesh is more than just a code virtuoso – he's
-              a natural leader. As a team lead for his final year project,
-              Nilesh orchestrated seamless collaboration, ensuring his team
-              surpassed all expectations. Ready to embark on a journey of
-              technological excellence with Nilesh? Let's create something
-              extraordinary together.
+              for video sessions, real-time messaging, and dynamic user interactions. Nilesh brings not only technical depth but also a strong sense of ownership, problem-solving, and collaborative spirit. Whether improving existing systems or architecting new ones from scratch, he’s always looking to learn, iterate, and build solutions that make a real impact.
             </article>
-            <div className="flex gap-8 flex-col justify-start items-start sm:basis-1/2">
+
+            <div className="flex gap-8 flex-col justify-start items-start sm:basis-1/2 mt-4">
               <div className="about-cards flex gap-4 flex-col md:flex-row w-full">
                 {data?.sections.map((details, index) => (
                   <AboutCard details={details} index={index} key={index} />
                 ))}
               </div>
             </div>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <div className="flex  gap-4 self-center justify-center">
-              <a
-                rel="noreferrer"
-                href={"https://www.linkedin.com/in/nilesh-gautam10/"}
-                aria-label="linkedin"
-                target="_blank"
-                className="cursor-pointer relative group socials"
-              >
-                <div className="absolute inset-0 group-hover:bg-white/30 opacity-0 group-hover:opacity-80 group-hover:blur-lg transition-all ease-in-out duration-100"></div>
-                <FontAwesomeIcon
-                  className="group-hover:text-blue-500 ease-in-out duration-100 transition-colors"
-                  icon={faLinkedinIn}
-                  size="3x"
-                />
-              </a>
-              <a
-                rel="noreferrer"
-                href={"https://github.com/No1nilesh"}
-                target="_blank"
-                aria-label="github"
-                className="cursor-pointer relative group socials"
-              >
-                <div className="absolute inset-0 group-hover:bg-white/30 opacity-0 group-hover:opacity-80 group-hover:blur-lg transition-all ease-in-out duration-100"></div>
-                <FontAwesomeIcon
-                  className="group-hover:text-gray-400 ease-in-out duration-100 transition-colors"
-                  icon={faGithub}
-                  size="3x"
-                />
-              </a>
-              <a
-                rel="noreferrer"
-                href="https://twitter.com/Nilesh__g1"
-                target="_blank"
-                aria-label="twitter"
-                className="cursor-pointer relative group socials"
-              >
-                <div className="absolute inset-0 group-hover:bg-white/30 opacity-0 group-hover:opacity-80 group-hover:blur-lg transition-all ease-in-out duration-100"></div>
-                <FontAwesomeIcon
-                  className="relative z-10 transition-colors ease-in-out duration-100 group-hover:invert"
-                  icon={faXTwitter}
-                  size="3x"
-                />
-              </a>
-            </div>
-            <ResumeButton />
           </div>
         </div>
       </div>
