@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans:
+    "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+
+  --color-bg: #f1f3fd;
+  --color-surface: #ffffff;
+  --color-surface-subtle: #f8f9fe;
+
+  --color-foreground: #121324;
+  --color-foreground-muted: #52546e;
+
+  --color-text: #191b2e;
+  --color-text-muted: #676982;
+  --color-text-light: #9698ab;
+
+  --color-primary: #7565e8;
+  --color-primary-hover: #6352dc;
+  --color-primary-light: #f1efff;
+  --color-primary-soft: #eae7fd;
+
+  --color-lavender: #ede9fe;
+  --color-blue: #e0f2fe;
+  --color-peach: #ffedd5;
+  --color-mint: #dcfce7;
+  --color-butter: #fef9c3;
+
+  --color-border: #e6e8f4;
+  --color-border-subtle: #edf0f8;
+  --color-success: #22c55e;
+
+  --color-badge: #f1effe;
+
+  --shadow-card:
+    0 4px 20px -2px rgba(35, 30, 80, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+  --shadow-hover:
+    0 16px 36px -6px rgba(35, 30, 80, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+@layer components {
+  .bento-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.375rem;
+    box-shadow: var(--shadow-card);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .bento-card:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: #dedff0;
+  }
+
+  .tech-badge,
+  .glass-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    border-radius: 9999px;
+    padding: 0.45rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #2b2d42;
+    background-color: #f6f7fd;
+    border: 1px solid #e7e9f5;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s ease;
+  }
+
+  .tech-badge:hover {
+    background-color: #ffffff;
+    border-color: #d8dbef;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(45, 40, 80, 0.06);
+  }
+}

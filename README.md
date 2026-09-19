@@ -1,73 +1,78 @@
-# My Portfolio Website
+# React + TypeScript + Vite
 
-Welcome to my portfolio repository! This project showcases my skills and projects as a web developer, highlighting my expertise in Vite, React, and Express.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+Currently, two official plugins are available:
 
-## Table of Contents
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
- - Introduction
- - Features
- - Technologies Used
- - Installation
- - Technologies Used
- - Project Stucture
- - Screenshot
+## React Compiler
 
+The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
 
-## Introduction
-This portfolio is a collection of my professional work, personal projects, and a demonstration of my web development skills. It includes interactive elements, dynamic content, and showcases my ability to create responsive and visually appealing web applications.
-## Features
+Note: This will impact Vite dev & build performances.
+You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
 
-- Interactive 3D Element: A dynamic 3D model showcasing my projects
-- Responsive Design: Ensures a seamless experience across all devices.
-- Modern UI/UX: Clean and modern design for an engaging user experience.
-- Optimized Performance: Fast load times and smooth interactions.
+## Expanding the ESLint configuration
 
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## Technologies Used
-- Front-end: React, Vite.js
-- Back-end: Express, Node
-- Styling: CSS, Tailwind
-- 3D Element: [Three.js]
-- Animation : Gsap
-- Carousel : [Swiper.js]
-## Installation
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-Clone the project
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-```bash
- git clone https://github.com/No1nilesh/My_Portfolio.git
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+
 ```
 
-Go to the project directory
+You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
 
-```bash
-  cd portfolio_website
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+
 ```
-
-Install dependencies
-
-```bash
-  npm install
-```
-Start the server
-
-```bash
-  npm run dev
-```
-```bash 
-  npm run tailwind
-```
-
-
-## Demo
-https://nilesh-gautam.netlify.app/
-## Contributing
-
-Contributions are always welcome!
- If you have any ideas, suggestions, or improvements, feel free to open an issue or submit a pull request.
-
-
-
-## Screenshots
-![desktoppf](https://github.com/user-attachments/assets/881e7aad-ae85-4290-b2b0-a9479e942cfb)
