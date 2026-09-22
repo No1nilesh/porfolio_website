@@ -12,14 +12,12 @@
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/three": "^0.186.0",
     "clsx": "^2.1.1",
     "motion": "^13.4.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "tailwind-merge": "^3.7.0",
-    "tailwindcss": "^4.3.3",
-    "three": "^0.186.0"
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
