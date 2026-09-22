@@ -23,6 +23,12 @@ export function GalvanicProvider({ children }: { children: React.ReactNode }) {
     } catch {
       // ignore
     }
+
+    const themeName = isGalvanic ? "galvanic" : "light";
+    document.documentElement.setAttribute("data-theme", themeName);
+    document.body.setAttribute("data-mode", themeName);
+    document.documentElement.classList.toggle("galvanic-mode", isGalvanic);
+    document.body.classList.toggle("galvanic-mode", isGalvanic);
   }, [isGalvanic]);
 
   const toggleGalvanic = () => setIsGalvanic((prev) => !prev);
@@ -35,6 +41,7 @@ export function GalvanicProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useGalvanic(): GalvanicContextType {
   const context = useContext(GalvanicContext);
   if (!context) {

@@ -845,7 +845,7 @@ const ArcRecator = () => {
             </div>
 
             {/* STATUS + TAGLINE */}
-            <div className="text-center mt-1 px-2 max-w-sm">
+            {/* <div className="text-center mt-1 px-2 max-w-sm">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={stage.key}
@@ -904,7 +904,7 @@ const ArcRecator = () => {
                 <p className="mt-0.5 text-xs text-slate-400 font-normal">
                     Turning ideas into real experiences
                 </p>
-            </div>
+            </div> */}
         </>
     )
 }

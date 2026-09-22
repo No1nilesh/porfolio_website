@@ -1,32 +1,15 @@
 import { Icons } from "./Icons/Icons";
-import { useGalvanic } from "../Context/GalvanicContext";
 
 export default function Navbar() {
-  const { isGalvanic } = useGalvanic();
-
   return (
-    <header className="w-full mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <header className="w-full mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 bg-inherit">
       {/* Brand Identity */}
       <div className="flex items-center gap-3">
-        <span
-          className={`text-base sm:text-lg font-bold tracking-wider uppercase transition-colors duration-500 ${
-            isGalvanic
-              ? "text-[#90db2d] drop-shadow-[0_0_8px_rgba(144,219,45,0.5)]"
-              : "text-[#1e2030]"
-          }`}
-        >
+        <span className="brand-text text-base sm:text-lg font-bold tracking-wider uppercase">
           Nilesh Gautam
         </span>
-        <span
-          className={`size-1.5 rounded-full transition-colors duration-500 ${
-            isGalvanic ? "bg-[#90db2d]" : "bg-primary/70"
-          }`}
-        />
-        <span
-          className={`text-xs sm:text-sm font-medium transition-colors duration-500 ${
-            isGalvanic ? "text-slate-300" : "text-text-muted"
-          }`}
-        >
+        <span className="size-1.5 rounded-full bg-primary" />
+        <span className="text-xs sm:text-sm font-medium text-text-muted">
           Frontend Developer
         </span>
       </div>
@@ -37,11 +20,7 @@ export default function Navbar() {
           href="https://github.com/No1nilesh"
           target="_blank"
           rel="noopener noreferrer"
-          className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium border shadow-xs hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 ${
-            isGalvanic
-              ? "bg-[#0c120c]/90 hover:bg-[#121c12] text-slate-200 border-[#90db2d]/30 hover:border-[#90db2d]/60"
-              : "bg-white/90 hover:bg-white text-slate-800 border-border"
-          }`}
+          className="nav-btn"
         >
           <Icons.Github className="size-4" />
           <span>GitHub</span>
@@ -51,24 +30,16 @@ export default function Navbar() {
           href="https://www.linkedin.com/in/nilesh-gautam"
           target="_blank"
           rel="noopener noreferrer"
-          className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium border shadow-xs hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 ${
-            isGalvanic
-              ? "bg-[#0c120c]/90 hover:bg-[#121c12] text-slate-200 border-[#90db2d]/30 hover:border-[#90db2d]/60"
-              : "bg-white/90 hover:bg-white text-slate-800 border-border"
-          }`}
+          className="nav-btn"
         >
           <Icons.LinkedIn className="size-4" />
           <span>LinkedIn</span>
         </a>
 
-        {/* CTA Button: Line strip color (#90db2d) in Omnitrix / Dark mode */}
+        {/* CTA Button: Primary theme button */}
         <a
           href="mailto:gautamnilesh03@gmail.com"
-          className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5 ${
-            isGalvanic
-              ? "bg-[#90db2d] hover:bg-[#a2f038] text-black font-bold shadow-[0_0_15px_rgba(144,219,45,0.4)]"
-              : "bg-white/90 hover:bg-white text-slate-800 font-medium border border-border"
-          }`}
+          className="btn-theme-primary !py-1.5 !px-4 text-xs sm:text-sm cursor-pointer"
         >
           <Icons.Gmail className="size-4" />
           <span>Let's Talk</span>

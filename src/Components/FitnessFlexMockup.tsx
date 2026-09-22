@@ -1,9 +1,6 @@
 import { ArrowRightIcon } from "@phosphor-icons/react";
-import { useGalvanic } from "../Context/GalvanicContext";
 
 export default function FitnessFlexMockup() {
-  const { isGalvanic } = useGalvanic();
-
   return (
     <div className="relative w-full max-w-90 h-52.5 select-none">
       {/* Skewed/Tilted Dashboard Screen Container */}
@@ -48,7 +45,7 @@ export default function FitnessFlexMockup() {
               </div>
             </div>
 
-            {/* Stylized Purple Bar Chart */}
+            {/* Stylized Bar Chart */}
             <div className="bg-white/2 p-2 rounded-lg border border-white/5 flex items-end justify-between gap-1 h-16">
               {[35, 55, 40, 80, 60, 95, 70, 85, 45, 90, 75, 100, 65, 80, 50].map(
                 (val, idx) => (
@@ -79,17 +76,10 @@ export default function FitnessFlexMockup() {
         </div>
       </div>
 
-      {/* Circular Floating Arrow Button matching reference */}
-      <div
-        className={`absolute -bottom-3 -right-2 sm:-right-3 size-10 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 group-hover:translate-x-1 group-hover:scale-105 ${
-          isGalvanic
-            ? "bg-[#90db2d] text-black border border-[#a2f038] shadow-[0_0_15px_rgba(144,219,45,0.4)]"
-            : "bg-white text-slate-900 border border-slate-100"
-        }`}
-      >
+      {/* Circular Floating Arrow Button */}
+      <div className="absolute -bottom-3 -right-2 sm:-right-3 size-10 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 group-hover:translate-x-1 group-hover:scale-105 bg-btn-primary text-btn-primary-text border border-border shadow-btn-primary">
         <ArrowRightIcon size={16} weight="bold" />
       </div>
     </div>
   );
 }
-

@@ -232,9 +232,9 @@ export default function OmnitrixCore({ onExit }: OmnitrixCoreProps) {
 
 
   return (
-    <div className="relative flex flex-col items-center justify-baseline w-full h-full min-h-110 select-none">
+    <div className="relative flex flex-col items-center justify-center w-full h-full min-h-0 select-none">
       {/* ── TOP ACTION BAR: BEN 10 STATUS & AUDIO CONTROLS ── */}
-      <div className="w-full flex items-center justify-between px-3 max-w-105 z-30">
+      <div className="w-full flex items-center justify-between px-3 max-w-105 z-30 shrink-0">
         <div className="flex items-center gap-2">
           <span className="relative flex h-2.5 w-2.5">
             <span
@@ -254,29 +254,29 @@ export default function OmnitrixCore({ onExit }: OmnitrixCoreProps) {
         <div className="flex items-center gap-1.5">
           <button
             onClick={() => setIsMuted(!isMuted)}
-            className="p-1.5 rounded-md bg-slate-900/80 hover:bg-slate-800 text-emerald-400 border border-emerald-500/30 transition-colors"
+            className="p-1 rounded-md bg-slate-900/80 hover:bg-slate-800 text-emerald-400 border border-emerald-500/30 transition-colors"
             title={isMuted ? "Unmute Audio" : "Mute Audio"}
           >
             {isMuted ? (
-              <SpeakerSlashIcon size={14} weight="bold" />
+              <SpeakerSlashIcon size={13} weight="bold" />
             ) : (
-              <SpeakerHighIcon size={14} weight="bold" />
+              <SpeakerHighIcon size={13} weight="bold" />
             )}
           </button>
           {onExit && (
             <button
               onClick={onExit}
-              className="p-1.5 rounded-md bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-700 transition-colors"
+              className="p-1 rounded-md bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-700 transition-colors"
               title="Return to Core"
             >
-              <XIcon size={14} weight="bold" />
+              <XIcon size={13} weight="bold" />
             </button>
           )}
         </div>
       </div>
 
       {/* ── MAIN OMNITRIX PHYSICAL GAUNTLET & FACEPLATE ── */}
-      <div className="relative w-full max-w-105 aspect-square flex items-center justify-center">
+      <div className="relative max-w-105 max-h-105 aspect-square flex items-center justify-baseline flex-1">
         {/* Dark Theme / Galvanic Mechamorph Outer Glow Ring */}
 
         <motion.div
@@ -781,11 +781,9 @@ export default function OmnitrixCore({ onExit }: OmnitrixCoreProps) {
       </div>
 
       {/* ── BOTTOM HUD & TACTILE INTERACTION PANEL ── */}
-      <div className="w-full max-w-sm flex flex-col items-center text-center px-4 z-20">
-        {/* ACTIVE SELECTION STATE */}
+      {/* <div className="w-full max-w-sm flex flex-col items-center text-center px-4 z-20">
         {state === "active" && (
           <div className="flex flex-col items-center w-full">
-            {/* Alien Stats Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-950/90 border border-emerald-500/40">
               <span className="text-[11px] font-mono font-bold text-emerald-400 tracking-wider">
                 {currentAlien.name}
@@ -801,7 +799,7 @@ export default function OmnitrixCore({ onExit }: OmnitrixCoreProps) {
             </p>
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }

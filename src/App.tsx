@@ -1,4 +1,3 @@
-import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
 import Footer from "./Components/Footer";
 import { GalvanicProvider, useGalvanic } from "./Context/GalvanicContext";
@@ -8,13 +7,7 @@ function AppContent() {
   const { isGalvanic } = useGalvanic();
 
   return (
-    <div
-      className={`min-h-screen w-full flex flex-col justify-between relative overflow-hidden transition-colors duration-700 ${
-        isGalvanic
-          ? "galvanic-mode bg-[#000000] text-slate-100 selection:bg-[#90db2d] selection:text-black"
-          : "bg-bg text-foreground selection:bg-purple-200 selection:text-purple-900"
-      }`}
-    >
+    <div className="h-full min-h-screen w-full flex flex-col justify-between relative overflow-hidden transition-colors duration-700 bg-bg text-text">
       {/* ── GALVANIC MECHAMORPH SVG BACKGROUND ── */}
       <GalvanicBackground active={isGalvanic} />
 
@@ -27,13 +20,14 @@ function AppContent() {
         </>
       )}
 
-      {/* Main Content Container */}
-      <div className="relative z-10 flex-1 flex flex-col p-0 sm:p-4 gap-4">
-        <Navbar />
-        <main className="flex-1">
+      {/* Main Content Container: exact full width and padding without max-w constraint */}
+      <div className="relative z-10 flex-1 min-h-0 flex flex-col p-0 sm:p-4 gap-3 w-full overflow-hidden">
+        <main className="flex-1 min-h-0 w-full overflow-hidden flex flex-col">
           <Home />
         </main>
-        <Footer />
+        <div className="shrink-0">
+          <Footer />
+        </div>
       </div>
     </div>
   );
