@@ -7,7 +7,6 @@ import {
   SpeakerSlashIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { useGalvanic } from "../Context/GalvanicContext";
 import Alien1 from "/aliens/alien1.svg";
 import Alien3 from "/aliens/alien3.svg";
 import Alien2 from "/aliens/alien2.svg";
@@ -180,7 +179,6 @@ export default function OmnitrixCore({ onExit }: OmnitrixCoreProps) {
   const [dialAngle, setDialAngle] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const [shockwaveTrigger, setShockwaveTrigger] = useState(0);
-  const { isGalvanic } = useGalvanic();
 
   const filterId = useId();
   const screenGlowId = `omni-glow-${filterId}`;
@@ -189,9 +187,6 @@ export default function OmnitrixCore({ onExit }: OmnitrixCoreProps) {
 
   const currentAlien = CLASSIC_ALIENS[currentIndex];
   const selectedAlien = aliens[currentIndex]
-
-  console.log({ selectedAlien })
-
 
   const playSound = (audio: HTMLAudioElement) => {
     audio.currentTime = 0;
@@ -283,24 +278,22 @@ export default function OmnitrixCore({ onExit }: OmnitrixCoreProps) {
       {/* ── MAIN OMNITRIX PHYSICAL GAUNTLET & FACEPLATE ── */}
       <div className="relative w-full max-w-105 aspect-square flex items-center justify-center">
         {/* Dark Theme / Galvanic Mechamorph Outer Glow Ring */}
-        {isGalvanic && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: [0.85, 1, 0.85],
-              scale: [1, 1.01, 1],
-            }}
-            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute rounded-full pointer-events-none z-0"
-            style={{
-              inset: "12.5%",
-              boxShadow:
-                "0 0 16px #90db2d, 0 0 32px rgba(144, 219, 45, 0.65), inset 0 0 12px rgba(144, 219, 45, 0.35)",
-              border: "2px solid rgba(144, 219, 45, 0.85)",
-            }}
-          />
-        )}
 
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: [0.85, 1, 0.85],
+            scale: [1, 1.01, 1],
+          }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute rounded-full pointer-events-none z-0"
+          style={{
+            inset: "12.5%",
+            boxShadow:
+              "0 0 16px #90db2d, 0 0 32px rgba(144, 219, 45, 0.65), inset 0 0 12px rgba(144, 219, 45, 0.35)",
+            border: "2px solid rgba(144, 219, 45, 0.85)",
+          }}
+        />
 
         {/* Ambient Toxic Radiation Bloom */}
         <motion.div
@@ -807,17 +800,6 @@ export default function OmnitrixCore({ onExit }: OmnitrixCoreProps) {
               {currentAlien.homeWorld})
             </p>
           </div>
-        )}
-        {onExit && (
-          <button
-            onClick={onExit}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider cursor-pointer transition-all duration-200 hover:scale-105 active:scale-95 text-emerald-700"
-          >
-            <span>
-              <span className="w-1.5 h-1.5 rounded-Ifull bg-emerald-500 aniImate-pulse" />
-              [ ARC RECTOR MODE ]
-            </span>
-          </button>
         )}
       </div>
     </div>
