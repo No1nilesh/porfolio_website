@@ -13,7 +13,7 @@ export default function GalvanicBackground({ active }: GalvanicBackgroundProps) 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
           className="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
           style={{ backgroundColor: "#000000" }}
         >
@@ -22,7 +22,7 @@ export default function GalvanicBackground({ active }: GalvanicBackgroundProps) 
             initial={{ clipPath: "circle(0% at 50% 48%)" }}
             animate={{ clipPath: "circle(150% at 50% 48%)" }}
             exit={{ clipPath: "circle(0% at 50% 48%)" }}
-            transition={{ duration: 2.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0 w-full h-full flex items-center justify-center"
           >
             <svg

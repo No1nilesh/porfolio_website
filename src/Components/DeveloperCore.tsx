@@ -16,7 +16,7 @@ export default function DeveloperCore() {
         <motion.div
           id="real-omnitrix-slot"
           key={isGalvanic ? 'om' : 'ar'}
-          className="w-full h-full flex justify-center items-center flex-col"
+          className="w-full h-full min-h-126 flex justify-center items-center flex-col"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}

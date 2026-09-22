@@ -1,11 +1,74 @@
 @import "tailwindcss";
 
+:root {
+  --theme-bg: #f1f3fd;
+  --theme-surface: #ffffff;
+  --theme-surface-subtle: #f8f9fe;
+
+  --theme-foreground: #121324;
+  --theme-foreground-muted: #52546e;
+
+  --theme-text: #191b2e;
+  --theme-text-muted: #676982;
+  --theme-text-light: #9698ab;
+
+  --theme-primary: #7565e8;
+  --theme-primary-hover: #6352dc;
+  --theme-primary-light: #f1efff;
+  --theme-primary-soft: #eae7fd;
+
+  --theme-border: #e6e8f4;
+  --theme-border-subtle: #edf0f8;
+
+  --theme-success: #22c55e;
+  --theme-badge: #f1effe;
+
+
+  --theme-shadow-card:
+    0 4px 20px -2px rgba(35, 30, 80, 0.04),
+    0 2px 6px -1px rgba(0, 0, 0, 0.02);
+
+  --theme-shadow-hover:
+    0 16px 36px -6px rgba(35, 30, 80, 0.08),
+    0 4px 12px -2px rgba(35, 30, 80, 0.03);
+}
+
+body[data-mode="galvanic"] {
+  --theme-bg: #020403;
+  --theme-surface: #070b08;
+  --theme-surface-subtle: #0c120d;
+
+  --theme-foreground: #f8fafc;
+  --theme-foreground-muted: #cbd5e1;
+
+  --theme-text: #f8fafc;
+  --theme-text-muted: #94a3b8;
+  --theme-text-light: #64748b;
+
+  --theme-primary: #90db2d;
+  --theme-primary-hover: #a8ef3b;
+  --theme-primary-light: rgba(144, 219, 45, 0.12);
+  --theme-primary-soft: rgba(144, 219, 45, 0.08);
+
+  --theme-border: rgba(144, 219, 45, 0.18);
+  --theme-border-subtle: rgba(144, 219, 45, 0.10);
+
+  --theme-success: #90db2d;
+  --theme-badge: rgba(144, 219, 45, 0.08);
+
+  --theme-shadow-card:
+    0 4px 30px rgba(0, 0, 0, 0.35);
+
+  --theme-shadow-hover:
+    0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
 @theme {
   --font-sans:
     "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, sans-serif;
 
-  --color-bg: #f1f3fd;
+  --color-bg: var(--theme-bg);
   --color-surface: #ffffff;
   --color-surface-subtle: #f8f9fe;
 
