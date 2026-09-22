@@ -1,6 +1,9 @@
 import { ArrowRightIcon } from "@phosphor-icons/react";
+import { useGalvanic } from "../Context/GalvanicContext";
 
 export default function FitnessFlexMockup() {
+  const { isGalvanic } = useGalvanic();
+
   return (
     <div className="relative w-full max-w-90 h-52.5 select-none">
       {/* Skewed/Tilted Dashboard Screen Container */}
@@ -77,7 +80,13 @@ export default function FitnessFlexMockup() {
       </div>
 
       {/* Circular Floating Arrow Button matching reference */}
-      <div className="absolute -bottom-3 -right-2 sm:-right-3 size-10 rounded-full bg-white text-slate-900 flex items-center justify-center shadow-lg border border-slate-100 transition-transform duration-200 group-hover:translate-x-1 group-hover:scale-105">
+      <div
+        className={`absolute -bottom-3 -right-2 sm:-right-3 size-10 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 group-hover:translate-x-1 group-hover:scale-105 ${
+          isGalvanic
+            ? "bg-[#90db2d] text-black border border-[#a2f038] shadow-[0_0_15px_rgba(144,219,45,0.4)]"
+            : "bg-white text-slate-900 border border-slate-100"
+        }`}
+      >
         <ArrowRightIcon size={16} weight="bold" />
       </div>
     </div>

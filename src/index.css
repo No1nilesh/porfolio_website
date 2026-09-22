@@ -82,4 +82,78 @@ body {
     transform: translateY(-1px);
     box-shadow: 0 4px 10px rgba(45, 40, 80, 0.06);
   }
+
+  /* ── Galvanic Mechamorph / Omnitrix Dark Mode Overrides ── */
+  .galvanic-mode h1,
+  .galvanic-mode h2,
+  .galvanic-mode h3,
+  .galvanic-mode h4,
+  .galvanic-mode h5,
+  .galvanic-mode h6 {
+    color: #f8fafc !important;
+  }
+
+  .galvanic-mode p {
+    color: #cbd5e1 !important;
+  }
+
+  .galvanic-mode .text-slate-900,
+  .galvanic-mode .text-slate-800,
+  .galvanic-mode .text-slate-700 {
+    color: #f8fafc !important;
+  }
+
+  .galvanic-mode .text-slate-600,
+  .galvanic-mode .text-slate-500 {
+    color: #cbd5e1 !important;
+  }
+
+  .galvanic-mode .text-slate-400 {
+    color: #94a3b8 !important;
+  }
+
+  .galvanic-mode .text-text-muted {
+    color: #94a3b8 !important;
+  }
+
+  .galvanic-mode .text-indigo-800 {
+    color: #90db2d !important;
+  }
+
+  .galvanic-mode .border-border,
+  .galvanic-mode .border-slate-100,
+  .galvanic-mode .border-slate-200,
+  .galvanic-mode .border-bg {
+    border-color: rgba(144, 219, 45, 0.18) !important;
+  }
+
+  .galvanic-mode .glass-badge {
+    background-color: rgba(144, 219, 45, 0.08) !important;
+    border-color: rgba(144, 219, 45, 0.25) !important;
+    color: #d9f99d !important;
+  }
+
+  .galvanic-mode .glass-badge svg {
+    color: #90db2d !important;
+  }
+
+  .galvanic-mode .tech-badge {
+    background-color: rgba(12, 18, 12, 0.85) !important;
+    border-color: rgba(144, 219, 45, 0.2) !important;
+    color: #e2e8f0 !important;
+  }
+
+  .galvanic-mode .tech-badge span {
+    color: #e2e8f0 !important;
+  }
+
+  .galvanic-mode .tech-badge:hover {
+    background-color: rgba(144, 219, 45, 0.18) !important;
+    border-color: rgba(144, 219, 45, 0.5) !important;
+    color: #ffffff !important;
+  }
+
+  .galvanic-mode .tech-badge:hover span {
+    color: #ffffff !important;
+  }
 }
