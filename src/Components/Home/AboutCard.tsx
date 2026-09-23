@@ -6,7 +6,6 @@ import {
   HeartIcon,
   LaptopIcon,
   MapPinIcon,
-  UserIcon,
 } from "@phosphor-icons/react";
 
 const infoItems = [
@@ -19,7 +18,7 @@ const infoItems = [
 export default function AboutCard() {
   return (
     <Card className="h-full flex flex-col justify-between p-4 sm:p-5 lg:p-5.5">
-      <CardHeader icon={UserIcon} title="About Me" />
+      <CardHeader title="About Me" />
 
       <div className="mt-2.5 lg:mt-3 grid grid-cols-12 gap-3 items-center flex-1">
         {/* Left Column */}

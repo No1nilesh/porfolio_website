@@ -1,12 +1,11 @@
 import Card from "../Card";
 import CardHeader from "./CardHeader";
-import { ArrowRightIcon, BriefcaseIcon } from "@phosphor-icons/react";
+import { ArrowRightIcon } from "@phosphor-icons/react";
 
 export default function ExperienceCard() {
   return (
     <Card className="h-full p-4 sm:p-5 lg:p-5.5 flex flex-col justify-between">
       <CardHeader
-        icon={BriefcaseIcon}
         title="Experience"
         action={
           <a

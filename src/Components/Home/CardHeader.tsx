@@ -1,7 +1,7 @@
 import type { ElementType, ReactNode } from "react";
 
 interface CardHeaderProps {
-  icon: ElementType;
+  icon?: ElementType;
   title: string;
   action?: ReactNode;
   className?: string;
@@ -17,9 +17,9 @@ export default function CardHeader({
     <div className={`flex items-center justify-between gap-2 ${className}`}>
       <div className="flex items-center gap-2">
 
-        <Icon size={24} weight="duotone" className="text-primary" />
+        {Icon && <Icon size={24} weight="duotone" className="text-primary" />}
 
-        <h2 className="text-xs sm:text-sm lg:text-xl font-semibold text-text truncate">
+        <h2 className="text-xs sm:text-sm lg:text-2xl font-semibold text-text truncate">
           {title}
         </h2>
       </div>

@@ -16,7 +16,7 @@ export default function ContactCard() {
           className="leading-none rotate-180 text-primary/40"
         />
 
-        <h2 className="mt-1.5 text-base sm:text-lg lg:text-xl font-extrabold text-text tracking-tight leading-snug">
+        <h2 className="mt-1.5 text-base sm:text-lg lg:text-3xl font-extrabold text-text tracking-tight leading-snug">
           Better interfaces for a simpler world.
         </h2>
       </div>
