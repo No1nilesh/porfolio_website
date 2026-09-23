@@ -19,25 +19,36 @@ export default function TechStackCard() {
         icon={LightningIcon}
         title="Tech Stack"
         action={
-          <span className="glass-badge !py-0.5 !px-2 text-[10px] sm:text-[11px] font-semibold text-primary">
+          <span className="glass-badge py-0.5! px-2! text-[10px] sm:text-[11px] font-semibold text-primary">
             Always learning...
           </span>
         }
       />
 
-      {/* Tech Badges Grid */}
-      <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-2">
-        {techStack.map((tech) => {
-          const IconComponent = tech.icon;
-          return (
-            <div key={tech.name} className="tech-badge !py-1 !px-2.5 cursor-default">
-              <IconComponent className="size-3.5 shrink-0" />
-              <span className="text-[11px] sm:text-xs font-medium text-inherit">
-                {tech.name}
-              </span>
-            </div>
-          );
-        })}
+      <div className="mt-2.5">
+        <p className="text-sm lg:text-base leading-relaxed text-text-muted">
+          Tools I use to build fast, scalable and maintainable web
+          experiences — with a focus on modern frontend development.
+        </p>
+
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-3">
+          {techStack.map((tech) => {
+            const IconComponent = tech.icon;
+
+            return (
+              <div
+                key={tech.name}
+                className="tech-badge py-1! px-2.5! cursor-default"
+              >
+                <IconComponent className="size-3.5 shrink-0" />
+
+                <span className="text-xs font-medium text-inherit">
+                  {tech.name}
+                </span>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </Card>
   );

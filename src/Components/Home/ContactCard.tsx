@@ -25,7 +25,7 @@ export default function ContactCard() {
       <div className="mt-2.5 flex flex-col gap-2.5">
         <a
           href="mailto:gautamnilesh03@gmail.com"
-          className="btn-theme-primary !py-2 !px-3 text-xs font-semibold cursor-pointer w-full text-center"
+          className="btn-theme-primary py-2! px-3! text-xs font-semibold cursor-pointer w-full text-center"
         >
           <span>Let's Work Together</span>
           <ArrowRightIcon size={12} weight="bold" />

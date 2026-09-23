@@ -23,16 +23,17 @@ export default function HeroCard() {
         </div>
 
         {/* Bio */}
-        <p className="mt-2 lg:mt-2.5 text-xs sm:text-xs lg:text-sm leading-relaxed text-text-muted">
-          I build clean, practical and scalable web applications. Currently
-          working at Spintly, building better access solutions for modern
-          workplaces.
+        <p className="mt-2 lg:mt-2.5 text-sm lg:text-base leading-relaxed text-text-muted">
+          I'm a frontend developer who enjoys turning complex ideas into simple,
+          intuitive interfaces. I work primarily with React, focusing on clean UI,
+          performance and maintainable architecture. Currently at Spintly, building
+          smart access solutions for modern workplaces.
         </p>
       </div>
 
       {/* CTA & Scroll Guide */}
       <div className="mt-3 lg:mt-4 flex flex-wrap items-center justify-between gap-2 pt-1">
-        <a href="#projects" className="btn-theme-primary py-2! px-4! text-xs sm:text-sm">
+        <a href="#projects" className="btn-theme-primary py-2! px-4! text-sm">
           <span>View My Work</span>
           <ArrowRightIcon size={14} weight="bold" />
         </a>
