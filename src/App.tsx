@@ -12,7 +12,7 @@ function AppContent() {
       <main className="size-full max-w-[1920px] mx-auto">
         <Home />
       </main>
-      <div className="mt-4">
+      <div className="mt-2">
         <Footer />
       </div>
     </div>

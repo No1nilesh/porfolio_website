@@ -1,22 +1,39 @@
 import Card from "../Card";
 import CardHeader from "./CardHeader";
 import { ArrowRightIcon } from "@phosphor-icons/react";
+import ExpandedExperience from "./Expanded/ExpandedExperience";
 
-export default function ExperienceCard() {
+interface ExperienceCardProps {
+  onViewFull?: () => void;
+  isExpanded?: boolean;
+}
+
+export default function ExperienceCard({ onViewFull, isExpanded = false }: ExperienceCardProps) {
+  if(isExpanded) return <ExpandedExperience/>
   return (
     <Card className="h-full p-4 sm:p-5 lg:p-5.5 flex flex-col justify-between">
       <CardHeader
         title="Experience"
         action={
-          <a
-            href="https://www.linkedin.com/in/nilesh-gautam"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-xs font-semibold text-text-muted hover:text-primary transition-colors"
-          >
-            <span>View Full</span>
-            <ArrowRightIcon size={12} weight="bold" />
-          </a>
+          onViewFull ? (
+            <button
+              onClick={onViewFull}
+              className="inline-flex items-center gap-1 text-xs font-semibold text-text-muted hover:text-primary transition-colors cursor-pointer"
+            >
+              <span>View Full</span>
+              <ArrowRightIcon size={12} weight="bold" />
+            </button>
+          ) : (
+            <a
+              href="https://www.linkedin.com/in/nilesh-gautam"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-text-muted hover:text-primary transition-colors"
+            >
+              <span>View Full</span>
+              <ArrowRightIcon size={12} weight="bold" />
+            </a>
+          )
         }
       />
 

@@ -2,11 +2,13 @@ import Card from "../Card";
 import CardHeader from "./CardHeader";
 import profileImg from "../../assets/profile.jpg";
 import {
+  ArrowRightIcon,
   GraduationCapIcon,
   HeartIcon,
   LaptopIcon,
   MapPinIcon,
 } from "@phosphor-icons/react";
+import ExpandedAbout from "./Expanded/ExpandedAbout";
 
 const infoItems = [
   { icon: MapPinIcon, text: "Vasco, Goa, India" },
@@ -15,10 +17,29 @@ const infoItems = [
   { icon: HeartIcon, text: "Cricket & Technology" },
 ];
 
-export default function AboutCard() {
+interface AboutCardProps {
+  onViewFull?: () => void;
+  isExpanded?: boolean;
+}
+
+export default function AboutCard({ onViewFull, isExpanded = false }: AboutCardProps) {
+  if (isExpanded) return <ExpandedAbout />
   return (
     <Card className="h-full flex flex-col justify-between p-4 sm:p-5 lg:p-5.5">
-      <CardHeader title="About Me" />
+      <CardHeader
+        title="About Me"
+        action={
+          onViewFull && (
+            <button
+              onClick={onViewFull}
+              className="inline-flex items-center gap-1 text-xs font-semibold text-text-muted hover:text-primary transition-colors cursor-pointer"
+            >
+              <span>View Full</span>
+              <ArrowRightIcon size={12} weight="bold" />
+            </button>
+          )
+        }
+      />
 
       <div className="mt-2.5 lg:mt-3 grid grid-cols-12 gap-3 items-center flex-1">
         {/* Left Column */}

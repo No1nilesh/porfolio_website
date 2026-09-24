@@ -1,8 +1,15 @@
 import Card from "../Card";
 import { Icons } from "../Icons/Icons";
 import { ArrowRightIcon, QuotesIcon } from "@phosphor-icons/react";
+import ExpandedContact from "./Expanded/ExpandedContact";
 
-export default function ContactCard() {
+interface ContactCardProps {
+  onViewFull?: () => void;
+  isExpanded: boolean
+}
+
+export default function ContactCard({ onViewFull, isExpanded = false }: ContactCardProps) {
+  if (isExpanded) return <ExpandedContact />
   return (
     <Card
       variant="lavender-gradient"
@@ -10,11 +17,22 @@ export default function ContactCard() {
     >
       {/* Quote Icon & Headline */}
       <div>
-        <QuotesIcon
-          size={28}
-          weight="fill"
-          className="leading-none rotate-180 text-primary/40"
-        />
+        <div className="flex items-center justify-between">
+          <QuotesIcon
+            size={28}
+            weight="fill"
+            className="leading-none rotate-180 text-primary/40"
+          />
+          {onViewFull && (
+            <button
+              onClick={onViewFull}
+              className="inline-flex items-center gap-1 text-xs font-semibold text-text-muted hover:text-primary transition-colors cursor-pointer"
+            >
+              <span>View Full</span>
+              <ArrowRightIcon size={12} weight="bold" />
+            </button>
+          )}
+        </div>
 
         <h2 className="mt-1.5 text-base sm:text-lg lg:text-3xl font-extrabold text-text tracking-tight leading-snug">
           Better interfaces for a simpler world.

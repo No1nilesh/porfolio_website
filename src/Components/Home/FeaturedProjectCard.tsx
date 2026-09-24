@@ -1,10 +1,17 @@
 import Card from "../Card";
 import FitnessFlexMockup from "../FitnessFlexMockup";
-import { ArrowUpRightIcon, StarIcon } from "@phosphor-icons/react";
+import { ArrowRightIcon, ArrowUpRightIcon, StarIcon } from "@phosphor-icons/react";
+import ExpandedProject from "./Expanded/ExpandedProject";
 
 const fitnessTags = ["Next.js", "Node.js", "Redis", "Socket.io"];
 
-export default function FeaturedProjectCard() {
+interface FeaturedProjectCardProps {
+  onViewFull?: () => void;
+  isExpanded?: boolean
+}
+
+export default function FeaturedProjectCard({ onViewFull, isExpanded = false }: FeaturedProjectCardProps) {
+  if(isExpanded) return <ExpandedProject/>
   return (
     <Card className="group h-full p-4 sm:p-5 lg:p-5.5 flex flex-col justify-between overflow-hidden">
       {/* Top Row */}
@@ -14,15 +21,27 @@ export default function FeaturedProjectCard() {
           <span>Featured Project</span>
         </span>
 
-        <a
-          href="https://github.com/No1nilesh"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-xs font-semibold text-text-muted hover:text-primary transition-colors"
-        >
-          <span>View Project</span>
-          <ArrowUpRightIcon size={13} weight="bold" />
-        </a>
+        <div className="flex items-center gap-2">
+          {onViewFull && (
+            <button
+              onClick={onViewFull}
+              className="inline-flex items-center gap-1 text-xs font-semibold text-text-muted hover:text-primary transition-colors cursor-pointer"
+            >
+              <span>View Full</span>
+              <ArrowRightIcon size={12} weight="bold" />
+            </button>
+          )}
+
+          <a
+            href="https://github.com/No1nilesh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-text-muted hover:text-primary transition-colors"
+          >
+            <span>View Project</span>
+            <ArrowUpRightIcon size={13} weight="bold" />
+          </a>
+        </div>
       </div>
 
       {/* Content & Mockup */}

@@ -1,7 +1,15 @@
 import Card from "../Card";
 import { ArrowDownIcon, ArrowRightIcon } from "@phosphor-icons/react";
+import ExpandedHero from "./Expanded/ExpandedHero";
 
-export default function HeroCard() {
+interface HeroCardProps {
+  onViewFull?: () => void;
+  isExpanded?: boolean
+}
+
+export default function HeroCard({ onViewFull, isExpanded = false }: HeroCardProps) {
+
+  if (isExpanded) return <ExpandedHero />
   return (
     <Card className="h-full flex flex-col justify-between p-4 sm:p-5 lg:p-5.5">
       <div>
@@ -10,6 +18,15 @@ export default function HeroCard() {
           <span className="glass-badge text-xs font-semibold text-primary">
             👋 Hey there!
           </span>
+          {onViewFull && (
+            <button
+              onClick={onViewFull}
+              className="inline-flex items-center gap-1 text-xs font-semibold text-text-muted hover:text-primary transition-colors cursor-pointer"
+            >
+              <span>View Full</span>
+              <ArrowRightIcon size={12} weight="bold" />
+            </button>
+          )}
         </div>
 
         {/* Headings */}

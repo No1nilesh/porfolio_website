@@ -21,7 +21,7 @@ export default function DeveloperCore() {
           {isGalvanic ? <OmnitrixCore /> : <ArcRecator />}
         </motion.div>
       </AnimatePresence>
-      <div className="mt-1.5 shrink-0">
+      <div className="mt-1.5 shrink-0 flex items-center gap-2">
         <button
           onClick={() => setGalvanic(!isGalvanic)}
           className="glass-badge px-3! py-0.5! text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider cursor-pointer transition-all duration-200 hover:scale-105 active:scale-95 text-primary"

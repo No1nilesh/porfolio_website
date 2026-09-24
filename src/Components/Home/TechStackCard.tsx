@@ -1,6 +1,8 @@
 import Card from "../Card";
 import CardHeader from "./CardHeader";
 import { Icons } from "../Icons/Icons";
+import { ArrowRightIcon } from "@phosphor-icons/react";
+import ExpandedTechStack from "./Expanded/ExpandedTechStack";
 
 const techStack = [
   { name: "React", icon: Icons.React },
@@ -11,15 +13,32 @@ const techStack = [
   { name: "MongoDB", icon: Icons.MongoDB },
 ];
 
-export default function TechStackCard() {
+interface TechStackCardProps {
+  onViewFull?: () => void;
+  isExpanded?: boolean
+}
+
+export default function TechStackCard({ onViewFull, isExpanded = false }: TechStackCardProps) {
+  if (isExpanded) return <ExpandedTechStack />
   return (
     <Card className="h-full flex flex-col justify-between p-4 sm:p-5 lg:p-5.5">
       <CardHeader
         title="Tech Stack"
         action={
-          <span className="glass-badge py-0.5! px-2! text-[10px] sm:text-[11px] font-semibold text-primary">
-            Always learning...
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="glass-badge py-0.5! px-2! text-[10px] sm:text-[11px] font-semibold text-primary">
+              Always learning...
+            </span>
+            {onViewFull && (
+              <button
+                onClick={onViewFull}
+                className="inline-flex items-center gap-1 text-xs font-semibold text-text-muted hover:text-primary transition-colors cursor-pointer"
+              >
+                <span>View Full</span>
+                <ArrowRightIcon size={12} weight="bold" />
+              </button>
+            )}
+          </div>
         }
       />
 
