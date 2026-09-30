@@ -146,7 +146,20 @@ function CardGrid({
             }}
             className={`${card.className} flex flex-col min-h-0`}
           >
-            <Component isExpanded={false} onViewFull={() => setActive(card.id as ActiveType)} />
+            <motion.div
+              animate={{
+                opacity: isActive ? 0 : 1,
+              }}
+              transition={{
+                duration: 0.15,
+              }}
+              className="h-full"
+            >
+              <Component
+                isExpanded={false}
+                onViewFull={() => setActive(card.id as ActiveType)}
+              />
+            </motion.div>
           </motion.div>
         );
       })}
@@ -171,13 +184,13 @@ export default function Home() {
   }, [active]);
 
   return (
-    <div className="w-full h-full min-h-0 flex flex-col justify-between gap-3 relative">
+    <div className="relative flex min-h-[calc(100svh-4rem)] flex-col gap-4">
       {/* TOP SECTION */}
       <CardGrid
         active={active}
         setActive={setActiveCard}
         cards={TOP_CARDS}
-        gridClassName="w-full grid grid-cols-1 lg:grid-cols-12 gap-4 flex-[1.8] min-h-0"
+        gridClassName="w-full grid grid-cols-1 lg:grid-cols-12 gap-4 lg:flex-[1.8] lg:min-h-0"
       />
 
       {/* BOTTOM SECTION */}
@@ -185,7 +198,7 @@ export default function Home() {
         active={active}
         setActive={setActiveCard}
         cards={BOTTOM_CARDS}
-        gridClassName="w-full grid grid-cols-1 lg:grid-cols-14 gap-4 flex-1 min-h-0"
+        gridClassName="w-full grid grid-cols-1 lg:grid-cols-14 gap-4 lg:flex-1 lg:min-h-0"
       />
 
       {/* EXPANDED CARD MODAL VIEW */}
@@ -226,11 +239,14 @@ export default function Home() {
                   </button>
                 </div>
                 <motion.div
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.12, duration: 0.25, ease: "easeOut" }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{
+                    delay: 0.18,
+                    duration: 0.2,
+                  }}
                 >
-                  <ActiveExpandedComponent isExpanded={true} />
+                  <ActiveExpandedComponent isExpanded />
                 </motion.div>
               </div>
             </motion.div>

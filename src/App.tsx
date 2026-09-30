@@ -7,13 +7,19 @@ function AppContent() {
   const { isGalvanic } = useGalvanic();
 
   return (
-    <div className="relative size-full transition-colors duration-700 bg-bg text-text p-4">
-      <GalvanicBackground active={isGalvanic} />
-      <main className="size-full max-w-[1920px] mx-auto">
-        <Home />
-      </main>
-      <div className="mt-2">
-        <Footer />
+    <div className="relative flex min-h-svh w-full flex-col bg-bg text-text transition-colors duration-700">
+      {/* Background */}
+      <div className="pointer-events-none fixed inset-0 z-0">
+        <GalvanicBackground active={isGalvanic} />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 mx-auto flex w-full max-w-[1920px] flex-1 flex-col p-4">
+        <main className="w-full flex-1">
+          <Home />
+        </main>
+
+        <Footer className="mt-2" />
       </div>
     </div>
   );

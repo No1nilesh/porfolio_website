@@ -2,6 +2,7 @@ import Card from "../Card";
 import FitnessFlexMockup from "../FitnessFlexMockup";
 import { ArrowRightIcon, ArrowUpRightIcon, StarIcon } from "@phosphor-icons/react";
 import ExpandedProject from "./Expanded/ExpandedProject";
+import { motion } from "motion/react";
 
 const fitnessTags = ["Next.js", "Node.js", "Redis", "Socket.io"];
 
@@ -11,7 +12,8 @@ interface FeaturedProjectCardProps {
 }
 
 export default function FeaturedProjectCard({ onViewFull, isExpanded = false }: FeaturedProjectCardProps) {
-  if(isExpanded) return <ExpandedProject/>
+
+  if (isExpanded) return <ExpandedProject />
   return (
     <Card className="group h-full p-4 sm:p-5 lg:p-5.5 flex flex-col justify-between overflow-hidden">
       {/* Top Row */}
@@ -77,10 +79,29 @@ export default function FeaturedProjectCard({ onViewFull, isExpanded = false }: 
           </div>
         </div>
 
-        {/* Visual Mockup */}
-        <div className="md:col-span-6 flex justify-center items-center">
+        <motion.div
+          initial={{
+            rotateX: 8,
+            rotateY: -10,
+            rotateZ: 0,
+          }}
+          whileHover={{
+            rotateX: 0,
+            rotateY: 0,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 180,
+            damping: 20,
+          }}
+          style={{
+            transformStyle: "preserve-3d",
+            transformOrigin: "bottom right",
+          }}
+          className="md:col-span-6 flex justify-center items-center"
+        >
           <FitnessFlexMockup />
-        </div>
+        </motion.div>
       </div>
     </Card>
   );
